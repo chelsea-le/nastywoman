@@ -21,3 +21,19 @@
 .tweetWrapper:hover {
     background-color:rgba(211,211,211, .39);
 }
+
+#sendBox {
+  position: relative;
+  margin-top: 10%;
+}
+
+.btn {
+  background-color:DarkOrange;
+}
+
+.tweetWrapper {
+  border: 2px double black;
+  margin-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
