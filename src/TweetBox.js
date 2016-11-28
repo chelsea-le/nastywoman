@@ -7,9 +7,9 @@ var TweetBox = React.createClass({
             <form onSubmit = {this.props.handleSubmit}>
                 <div className="input-field col s12" id="sendBox">
                     <input id="message" type="text" className="validate" />
-                    <label htmlFor="message">Broadcast your thoughts...</label>
+                    <label id="message-id">Broadcast your thoughts...</label>
                 </div>
-                <button type="submit" className="btn">Broadcast!</button>
+                <button type="submit" className="btn" id="broadcast-btn">Broadcast!</button>
             </form>
         )
     }

@@ -49,16 +49,20 @@ var TweetContainer = React.createClass({
     render() {
 
         // Sort keys by likes
-        let tweetKeys = Object.keys(this.state.tweets).sort((a,b) => {
+        //tweets sorted by more newest to oldest
+        let tweetKeys = Object.keys(this.state.tweets).sort((b,a) => {
             return this.state.tweets[b].likes - this.state.tweets[a].likes
         });
         return(
-            <section className="container">
+            <section className="tweet-container">
                 <TweetBox handleSubmit={this.createTweet}/>
                 {tweetKeys.map((d) => {
                     return <Tweet key={d}
                         data={this.state.tweets[d]}
                         handleClick={() => this.likeTweet(d)}
+                        //render time stamp
+                        time={this.createTweet.time}
+
                     />
                 })}
             </section>
