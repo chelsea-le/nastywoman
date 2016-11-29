@@ -18,6 +18,7 @@ var Tweet = React.createClass({
             <span className="likes"><i onClick={this.props.like} className="fa fa-thumbs-up"></i></span>
             <span className="likes">{this.props.data.likes}</span>
             <span className="likes"><i onClick={this.props.dislike} className="fa fa-thumbs-down"></i></span>
+            <span className="comment"><i onClick={this.props.data.comments} className="fa fa-comments"></i></span>
         </p>
       )
     }

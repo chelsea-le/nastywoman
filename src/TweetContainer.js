@@ -48,6 +48,19 @@ var TweetContainer = React.createClass({
             });
         });
     },
+
+    //Function that adds comments
+    // addComment(tweetId) {
+    //     let ref = this.tweetRef.child(tweetId);
+    //     ref.once('value').then(function(snapshot) {
+    //         var newComments = parseInt(snapshot.val().comments);
+    //         console.log(newComments)
+    //         // Update on firebase
+    //         ref.update({
+    //             comments: newComments
+    //         });
+    //     });
+    // },
     render() {
 
         // Sort keys by likes
@@ -65,9 +78,7 @@ var TweetContainer = React.createClass({
                           data={this.state.tweets[d]}
                           like={() => this.likeTweet(d, 1)}
                           dislike={() => this.likeTweet(d, -1)}
-                          //render time stamp
-                          time={this.createTweet.time}
-
+                          // comments={() => this.addComment(d)}
                       />
                   })}
               </section>

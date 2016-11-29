@@ -10,7 +10,8 @@
 .likes {
     float:right;
     line-height: 3rem;
-    margin-right: 15px;
+    margin-right: 2%;
+    margin-left: 2%;
     opacity:.4;
     font-style: italic;
 }
@@ -22,11 +23,19 @@
 }
 
 .content {
-  margin-left: 20px;
+  line-height: 3rem;
+  margin-left: 5%;
   font-weight: 200;
   font-family: monospace;
 }
 
+.comment{
+  float:right;
+  line-height: 3rem;
+  margin-right: 10%;
+  opacity:.4;
+  font-style: italic;
+}
 .tweetWrapper {
     border-bottom:1px solid #d3d3d3;
     cursor:pointer;
