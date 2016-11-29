@@ -38,16 +38,22 @@
 }
 .tweetWrapper {
     border-bottom:1px solid #d3d3d3;
-    cursor:pointer;
     user-select: none;
 }
 
 .fa-thumbs-up:hover {
     color:DarkOrange;
+    cursor:pointer;
 }
 
 .fa-thumbs-down:hover {
     color:red;
+    cursor:pointer;
+}
+
+.fa-comments:hover {
+  cursor:pointer;
+  color:DarkRed;
 }
 
 /*broadcast box*/

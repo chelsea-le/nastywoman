@@ -53,7 +53,7 @@ var TweetContainer = React.createClass({
     // addComment(tweetId) {
     //     let ref = this.tweetRef.child(tweetId);
     //     ref.once('value').then(function(snapshot) {
-    //         var newComments = parseInt(snapshot.val().comments);
+    //         var newComments = snapshot.val().comments;
     //         console.log(newComments)
     //         // Update on firebase
     //         ref.update({
@@ -66,7 +66,7 @@ var TweetContainer = React.createClass({
         // Sort keys by likes
         //tweets sorted by more newest to oldest
         let tweetKeys = Object.keys(this.state.tweets).sort((b,a) => {
-            return this.state.tweets[b].likes - this.state.tweets[a].likes
+            return this.state.tweets[a].time - this.state.tweets[b].time
         });
         return(
           <div>
