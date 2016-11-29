@@ -1,18 +1,25 @@
 // Tweets component
 import React from 'react';
 import './css/Tweet.css';
-// import '../node_modules/font-awesome/css/font-awesome.css'
+import '../node_modules/font-awesome/css/font-awesome.css'
 
 var Tweet = React.createClass({
 
     render() {
-        return(
-            <p className="tweetWrapper" onClick={this.props.handleClick}>
-                <span className="author">{"@"+this.props.data.author}</span>
-                <span className="content">{this.props.data.text}</span>
-                <span className="likes"><i className="fa fa-thumbs-up"></i>Likes: {this.props.data.likes}</span>
-            </p>
-        )
+      var d = new Date(this.props.data.time);
+      // var date = d.toDateString() + " " + d.toLocaleTimeString();
+      var date = d.toLocaleString();
+      console.log(d.toLocaleString());
+      return(
+        <p className="tweetWrapper">
+            <span className="author">{"@"+this.props.data.author+": "}</span>
+            <span className="time">{date}</span>
+            <span className="content">{this.props.data.text}</span>
+            <span className="likes"><i onClick={this.props.like} className="fa fa-thumbs-up"></i></span>
+            <span className="likes">{this.props.data.likes}</span>
+            <span className="likes"><i onClick={this.props.dislike} className="fa fa-thumbs-down"></i></span>
+        </p>
+      )
     }
 });
 

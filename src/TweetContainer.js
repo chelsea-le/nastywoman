@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import Tweet from './Tweet';
 import TweetBox from './TweetBox';
 
+
 var TweetContainer = React.createClass({
     getInitialState() {
         return {tweets:[]}
@@ -28,17 +29,18 @@ var TweetContainer = React.createClass({
             author:this.props.user,
             text:event.target.elements['message'].value,
             likes:0,
-            time:firebase.database.ServerValue.TIMESTAMP // firebase service
+            time:firebase.database.ServerValue.TIMESTAMP, // firebase service
+            comments: []
         };
         this.tweetRef.push(tweet);
         event.target.reset();
     },
 
     // Function to like a tweet
-    likeTweet(tweetId) {
+    likeTweet(tweetId, change) {
         let ref = this.tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
-            var newLikes = parseInt(snapshot.val().likes) + 1;
+            var newLikes = parseInt(snapshot.val().likes) + change;
             console.log(newLikes)
             // Update on firebase
             ref.update({
@@ -54,18 +56,22 @@ var TweetContainer = React.createClass({
             return this.state.tweets[b].likes - this.state.tweets[a].likes
         });
         return(
-            <section className="tweet-container">
-                <TweetBox handleSubmit={this.createTweet}/>
-                {tweetKeys.map((d) => {
-                    return <Tweet key={d}
-                        data={this.state.tweets[d]}
-                        handleClick={() => this.likeTweet(d)}
-                        //render time stamp
-                        time={this.createTweet.time}
+          <div>
+              <h5>Message Board</h5>
+              <section className="tweet-container">
+                  <TweetBox handleSubmit={this.createTweet}/>
+                  {tweetKeys.map((d) => {
+                      return <Tweet key={d}
+                          data={this.state.tweets[d]}
+                          like={() => this.likeTweet(d, 1)}
+                          dislike={() => this.likeTweet(d, -1)}
+                          //render time stamp
+                          time={this.createTweet.time}
 
-                    />
-                })}
-            </section>
+                      />
+                  })}
+              </section>
+          </div>
         )
     }
 });
