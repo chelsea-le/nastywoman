@@ -119,6 +119,7 @@ var App = React.createClass({
                     </section>
                 }
 
+                {/*Nico:*/}
                 <MapsPage />
                 <TrumpTwitterFeed />
             </div>

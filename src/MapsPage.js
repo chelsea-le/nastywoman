@@ -5,7 +5,8 @@ var MapsPage = React.createClass({
     render() {
       return (
         <div className="container">
-          <h3> Google Map Section </h3>
+          <hr />
+          <h3> Google Map </h3>
         </div>
       )
     },
