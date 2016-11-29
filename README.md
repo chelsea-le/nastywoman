@@ -1,1 +1,1 @@
-# nastywoman.github.io
+# nastywoman
