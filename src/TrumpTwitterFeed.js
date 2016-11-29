@@ -6,10 +6,6 @@ import '../node_modules/font-awesome/css/font-awesome.css'
 var TrumpTwitterFeed = React.createClass({
 
     render:function() {
-      var d = new Date(this.props.data.time);
-      // var date = d.toDateString() + " " + d.toLocaleTimeString();
-      var date = d.toLocaleString();
-      console.log(d.toLocaleString());
       return(
         <div>
           <a class="twitter-timeline"
@@ -21,4 +17,4 @@ var TrumpTwitterFeed = React.createClass({
     }
 });
 
-export default Tweet;
+export default TrumpTwitterFeed;
