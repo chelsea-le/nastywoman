@@ -9,10 +9,16 @@ import ToggleAuth from './ToggleAuth';
 import TweetContainer from './TweetContainer';
 import './css/App.css';
 
+import MapsPage from './MapsPage';
+
 // Create app
 var App = React.createClass({
     getInitialState(){
-        return{checked:false, user:null, authOption:'sign-in'}
+        return {
+          checked: false,
+          user: null,
+          authOption:'sign-in'
+        }
     },
 
     // When component mounts, check the user
@@ -23,7 +29,7 @@ var App = React.createClass({
         // Check for authentication state change (test if there is a user)
         firebase.auth().onAuthStateChanged((user) => {
             if (this.state.checked !== true) {
-                if(user) {
+                if (user) {
                     this.setState({user:user})
                 }
             }
@@ -83,14 +89,14 @@ var App = React.createClass({
 
     // Toggle between 'sign-up' and 'sign-in'
     toggleLogin() {
-        let option = this.state.authOption == 'sign-in' ? 'sign-up' : 'sign-in';
+        let option = this.state.authOption === 'sign-in' ? 'sign-up' : 'sign-in';
         this.setState({authOption:option});
     },
 
     render() {
 
         // Determine which 'authenticate' component should be shown
-        if(this.state.authOption == 'sign-up') {
+        if(this.state.authOption === 'sign-up') {
             var authComponent = <SignUp submit={this.signUp}/>
         }
         else {
@@ -108,11 +114,12 @@ var App = React.createClass({
                 {this.state.user &&
                     <section>
                         <SignOut submit={this.signOut}/>
-                        <TweetContainer user = {this.state.user.displayName}/>
+                        <TweetContainer user={this.state.user.displayName}/>
                     </section>
                 }
-            </div>
 
+                <MapsPage />
+            </div>
         )
     }
 });
