@@ -7,6 +7,7 @@ import SignIn from './SignIn';
 import SignOut from './SignOut';
 import ToggleAuth from './ToggleAuth';
 import TweetContainer from './TweetContainer';
+import TrumpTwitterFeed from './TrumpTwitterFeed';
 import './css/App.css';
 
 import MapsPage from './MapsPage';
@@ -119,6 +120,7 @@ var App = React.createClass({
                 }
 
                 <MapsPage />
+                <TrumpTwitterFeed />
             </div>
         )
     }
