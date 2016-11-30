@@ -12,7 +12,7 @@ var Tweet = React.createClass({
       var date = d.toLocaleString();
       console.log(d.toLocaleString());
       return(
-        <div className="card">
+        <div className="card small">
           <div className="card-content">
             <p className="tweetWrapper">
                 <span className="author">{"@"+this.props.data.author+": "}</span>
@@ -25,8 +25,14 @@ var Tweet = React.createClass({
             </p>
           </div>
           <div className="card-reveal">
-            <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right">close</i></span>
-            <p>{this.props.revealComments}</p>
+            <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right"><i className="fa fa-times"></i></i></span>
+            <form onSubmit = {this.props.revealComments}>
+                <div className="input-field col s12" id="sendBox">
+                    <input id="message" type="text" className="validate" />
+                    <label id="message-id">reply...</label>
+                </div>
+                <button type="submit" className="btn" id="broadcast-btn">Reply!</button>
+            </form>
           </div>
         </div>
       )

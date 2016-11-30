@@ -50,17 +50,17 @@ var TweetContainer = React.createClass({
     },
 
     //Function that adds comments
-    // addComment(tweetId) {
-    //     let ref = this.tweetRef.child(tweetId);
-    //     ref.once('value').then(function(snapshot) {
-    //         var newComments = snapshot.val().comments;
-    //         console.log(newComments)
-    //         // Update on firebase
-    //         ref.update({
-    //             comments: newComments
-    //         });
-    //     });
-    // },
+    addComment(tweetId) {
+        let ref = this.tweetRef.child(tweetId);
+        ref.once('value').then(function(snapshot) {
+            var newComments = snapshot.val().comments;
+            console.log(newComments)
+            // Update on firebase
+            ref.update({
+                comments: newComments
+            });
+        });
+    },
     render() {
 
         // Sort keys by likes
@@ -72,13 +72,14 @@ var TweetContainer = React.createClass({
           <div>
               <h5>Message Board</h5>
               <section className="tweet-container">
-                  <TweetBox handleSubmit={this.createTweet}/>
+                  {/* <TweetBox handleSubmit={this.createTweet}/> */}
+                  <TweetBox handleSubmit={this.createTweet} revealComments={this.addComent}/>
                   {tweetKeys.map((d) => {
                       return <Tweet key={d}
                           data={this.state.tweets[d]}
                           like={() => this.likeTweet(d, 1)}
                           dislike={() => this.likeTweet(d, -1)}
-                          // comments={() => this.addComment(d)}
+                          // revealComments={() => this.addComment(d)}
                       />
                   })}
               </section>
