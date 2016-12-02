@@ -53,7 +53,8 @@ var TweetContainer = React.createClass({
     addComment(tweetId, comment) {
         let ref = this.tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from firebase
-        ref.push('comment')
+        ref.push('hello')
+        return this.tweetRef.child(tweetId).child("comments")
     },
     render() {
         // Sort keys by likes

@@ -113,10 +113,12 @@ var App = React.createClass({
 
                 }
                 {this.state.user &&
-                    <section>
-                        <SignOut submit={this.signOut}/>
-                        <TweetContainer user={this.state.user.displayName}/>
-                    </section>
+                    <div>
+                        <section>
+                            <SignOut submit={this.signOut}/>
+                            <TweetContainer user={this.state.user.displayName}/>
+                        </section>
+                    </div>
                 }
 
                 {/*Nico:*/}
