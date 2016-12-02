@@ -20,7 +20,15 @@ var Tweet = React.createClass({
       var d = new Date(this.props.data.time);
       // var date = d.toDateString() + " " + d.toLocaleTimeString();
       var date = d.toLocaleString();
-      console.log(d.toLocaleString());
+
+      //comments appear on console -- need help rendering in tweet
+      var comments = this.props.data.comments     
+      for(var key in comments) {
+          if(comments.hasOwnProperty(key)) {
+              console.log(comments[key].comment);
+          }
+      }
+     
       return(
         <div className="card small">
           <div className="card-content">
@@ -34,6 +42,7 @@ var Tweet = React.createClass({
                 <span className="activator comment"><i className="fa fa-comments"></i></span>
             </p>
           </div>
+
           <div className="card-reveal">
             <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right"><i className="fa fa-times"></i></i></span>
             {/* <form onSubmit = {this.props.revealComments}> */}
