@@ -11,6 +11,11 @@ var Tweet = React.createClass({
     setCommentState:function(e) {
       this.setState({comment:e.target.value})
     },
+    buttonClick:function() {
+      var commentValue = this.state.comment
+      this.setState({comment:''})
+      this.props.revealComments(commentValue)
+    },
     render:function() {
       var d = new Date(this.props.data.time);
       // var date = d.toDateString() + " " + d.toLocaleTimeString();
@@ -33,10 +38,10 @@ var Tweet = React.createClass({
             <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right"><i className="fa fa-times"></i></i></span>
             {/* <form onSubmit = {this.props.revealComments}> */}
                 <div className="input-field col s12" id="sendBox">
-                    <input id="message" type="text" className="validate" onChange={this.setCommentState}/>
-                    <label id="message-id">reply...</label>
+                    <input id="message" type="text" value={this.state.comment} className="validate" placeholder="reply" onChange={this.setCommentState}/>
                 </div>
-                <button onClick ={this.props.revealComments} type="submit" className="btn" id="broadcast-btn" value={this.state.comment}>Reply!</button>
+                <button onClick ={this.buttonClick} type="submit" 
+                className="btn" id="broadcast-btn">Reply!</button>
             {/* </form> */}
           </div>
         </div>

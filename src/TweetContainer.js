@@ -73,7 +73,7 @@ var TweetContainer = React.createClass({
                           data={this.state.tweets[d]}
                           like={() => this.likeTweet(d, 1)}
                           dislike={() => this.likeTweet(d, -1)}
-                          revealComments={(e) => this.addComment(d, e.target.value)}
+                          revealComments={(e) => this.addComment(d, e)}
                       />
                   })}
               </section>
