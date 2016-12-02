@@ -51,10 +51,10 @@ var TweetContainer = React.createClass({
 
     //Function that adds comments
     addComment(tweetId, comment) {
+        console.log(comment)
         let ref = this.tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from firebase
-        ref.push('hello')
-        return this.tweetRef.child(tweetId).child("comments")
+        ref.push({comment})
     },
     render() {
         // Sort keys by likes
@@ -73,7 +73,7 @@ var TweetContainer = React.createClass({
                           data={this.state.tweets[d]}
                           like={() => this.likeTweet(d, 1)}
                           dislike={() => this.likeTweet(d, -1)}
-                          revealComments={() => this.addComment(d)}
+                          revealComments={(e) => this.addComment(d, e.target.value)}
                       />
                   })}
               </section>

@@ -5,8 +5,13 @@ import 'materialize-css'
 import '../node_modules/font-awesome/css/font-awesome.css'
 
 var Tweet = React.createClass({
-
-    render() {
+    getInitialState:function() {
+        return {comment:''}
+    },
+    setCommentState:function(e) {
+      this.setState({comment:e.target.value})
+    },
+    render:function() {
       var d = new Date(this.props.data.time);
       // var date = d.toDateString() + " " + d.toLocaleTimeString();
       var date = d.toLocaleString();
@@ -28,10 +33,10 @@ var Tweet = React.createClass({
             <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right"><i className="fa fa-times"></i></i></span>
             {/* <form onSubmit = {this.props.revealComments}> */}
                 <div className="input-field col s12" id="sendBox">
-                    <input id="message" type="text" className="validate" />
+                    <input id="message" type="text" className="validate" onChange={this.setCommentState}/>
                     <label id="message-id">reply...</label>
                 </div>
-                <button onClick ={this.props.revealComments} type="submit" className="btn" id="broadcast-btn">Reply!</button>
+                <button onClick ={this.props.revealComments} type="submit" className="btn" id="broadcast-btn" value={this.state.comment}>Reply!</button>
             {/* </form> */}
           </div>
         </div>
