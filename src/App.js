@@ -11,6 +11,7 @@ import TrumpTwitterFeed from './TrumpTwitterFeed';
 import './css/App.css';
 
 import MapsPage from './MapsPage';
+import HomePage from './HomePage';
 
 // Create app
 var App = React.createClass({
@@ -124,6 +125,7 @@ var App = React.createClass({
                 {/*Nico:*/}
                 <MapsPage />
                 <TrumpTwitterFeed />
+                <HomePage />
             </div>
         )
     }
