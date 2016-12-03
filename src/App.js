@@ -11,6 +11,7 @@ import FuelForYourFire from './FuelForYourFire';
 import './css/App.css';
 
 import MapsPage from './MapsPage';
+import HomePage from './HomePage';
 
 // Create app
 var App = React.createClass({
@@ -123,6 +124,7 @@ var App = React.createClass({
 
                 {/*Nico:*/}
                 <MapsPage />
+                <HomePage />
                 <FuelForYourFire />
             </div>
         )
