@@ -7,7 +7,7 @@ import SignIn from './SignIn';
 import SignOut from './SignOut';
 import ToggleAuth from './ToggleAuth';
 import TweetContainer from './TweetContainer';
-import TrumpTwitterFeed from './TrumpTwitterFeed';
+import FuelForYourFire from './FuelForYourFire';
 import './css/App.css';
 
 import MapsPage from './MapsPage';
@@ -123,7 +123,7 @@ var App = React.createClass({
 
                 {/*Nico:*/}
                 <MapsPage />
-                <TrumpTwitterFeed />
+                <FuelForYourFire />
             </div>
         )
     }
