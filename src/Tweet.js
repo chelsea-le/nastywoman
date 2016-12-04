@@ -16,6 +16,14 @@ var Tweet = React.createClass({
       this.setState({comment:''})
       this.props.revealComments(commentValue)
     },
+    getNumComments:function() {
+      var comNum = 0
+      var com = this.props.data.comments
+      if(com != null) {
+        var comNum = Object.keys(com).length
+      }
+      return comNum
+    },
     render:function() {
       var d = new Date(this.props.data.time);
       // var date = d.toDateString() + " " + d.toLocaleTimeString();
@@ -28,7 +36,7 @@ var Tweet = React.createClass({
               console.log(comments[key].comment);
           }
       }
-     
+   
       return(
         <div className="card small">
           <div className="card-content">
@@ -40,6 +48,7 @@ var Tweet = React.createClass({
                 <span className="likes">{this.props.data.likes}</span>
                 <span className="likes"><i onClick={this.props.dislike} className="fa fa-thumbs-down"></i></span>
                 <span className="activator comment"><i className="fa fa-comments"></i></span>
+                <span className="likes">{this.getNumComments()}</span>
             </p>
           </div>
 

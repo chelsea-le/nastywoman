@@ -80,6 +80,10 @@
   background-color:DarkOrange;
 }
 
+.btn:hover {
+  background-color:pink;
+}
+
 /*entire msg container*/
 .tweet-container {
   border: 2px double black;
