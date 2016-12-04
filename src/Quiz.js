@@ -1,69 +1,50 @@
-var SongSearch = React.createClass({
+/* Quiz */
+import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
+var QuizData = [
+    {id:"1", question:"Birth control?", a:"Yes", b:"No", c:"Your choice", answer:"c"},
+    {id:"2", question:"Love Trumps _____?", a:"Men", b:"Hate", c:"Bugs", answer:"b"},
+    {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"a"},
+    {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"b"},
+    {id:"5", question:"Consent is what?", a:"A grey area", b:"Once given cannot be retracted", c:"Mandatory", answer:"c"},
+    {id:"6", question:"Intentify Susan B Anthony", a:"susan", b:"ann", c:"jane", answer:"a"},
+
+];
+
+var Quiz = React.createClass({
 
     getInitialState:function() {
-        return{searchString:"", playlist:[], count:0};
+        return {numCorrect:0};
     },
-
-    search:function(e) {
-        var value = e.target.value;
-        
-        var message = value.split(" ");
-        //console.log(message);
-
-        this.setState({searchString:message});
-
-        var songData = [];
-
-        message.map(function(m){
-
-            var searchURL = "https://api.spotify.com/v1/search?q="+ m +"&type=track&limit=1"
-
-            $.get(searchURL).then(function(data) {
-
-                songData.push(  {key : 1,
-                                songName : data.tracks.items[0].name,
-                                artist : data.tracks.items[0].artists[0].name,
-                                album : data.tracks.items[0].album.name,
-                                albumArt : data.tracks.items[0].album.images[1].url,
-                                preview : data.tracks.items[0].preview_url
-                });
-
-                //console.log(songData);
-
-                this.setState({playlist:songData});
-
-                //console.log(state.playlist);
-
-            //hearts to Jordan he's the best TA ever #TAgoals
-            }.bind(this));
-
-        }.bind(this))
-        
-        //console.log(this.state.playlist);
-
-        if(value.length == 0){
-            <EmptyString/>
-        }
-    
+    update:function(event) {
+        var value = event.target.id;
+        /*check to see if value is correct*/
+        this.setState({numcorrect:0})
     },
-
     render:function() {
-        //var song;
-
-        var searchString = this.state.searchString;
-        var playlist = this.state.playlist;
-
-        //console.log(playlist);
-
-        //var placeholder = "Write away, angsty Bach";
-
-        return(
-            <div>
-                <div className="input">
-                    <input onChange={this.search} placeholder="Write away, angsty Bach, you got 80 characters." maxLength="80"/>
-                </div>
-                <Mix data={playlist}/>
-            </div>
+        return (
+            <MuiThemeProvider>
+              <div className="Quiz">
+                Quizdata.map(function(d) {
+                    <Questions data={bandData} changeEvent={this.update}/>
+                })
+              </div>
+            </MuiThemeProvider>
         )
     }
 });
+
+var Questions = React.createClass({
+
+    render:function() {
+        return(
+            <div className="question">  
+
+            </div>
+        )
+    }
+})
+
+export default Quiz;
