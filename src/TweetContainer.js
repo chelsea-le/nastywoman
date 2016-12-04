@@ -3,13 +3,15 @@ import React from 'react';
 import firebase from 'firebase';
 import Tweet from './Tweet';
 import TweetBox from './TweetBox';
+import SortFilter from './SortFilter';
+
 
 
 var TweetContainer = React.createClass({
-    getInitialState() {
-        return {tweets:[]}
+    getInitialState:function() {
+        return {tweets:[], order:'date'}
     },
-    componentDidMount(){
+    componentDidMount:function(){
         this.tweetRef = firebase.database().ref('tweets');
         this.tweetRef.on('value', (snapshot)=> {
 
@@ -21,7 +23,7 @@ var TweetContainer = React.createClass({
     },
 
     // Function to create a neew tweet
-    createTweet(event) {
+    createTweet:function(event) {
         event.preventDefault();
 
         // Get form info
@@ -30,14 +32,14 @@ var TweetContainer = React.createClass({
             text:event.target.elements['message'].value,
             likes:0,
             time:firebase.database.ServerValue.TIMESTAMP, // firebase service
-            comments: []
+            comments: {}
         };
         this.tweetRef.push(tweet);
         event.target.reset();
     },
 
     // Function to like a tweet
-    likeTweet(tweetId, change) {
+    likeTweet:function(tweetId, change) {
         let ref = this.tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
             var newLikes = parseInt(snapshot.val().likes) + change;
@@ -50,23 +52,59 @@ var TweetContainer = React.createClass({
     },
 
     //Function that adds comments
-    addComment(tweetId, comment) {
+    addComment:function(tweetId, comment) {
         console.log(comment)
         let ref = this.tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from firebase
         ref.push({comment})
     },
-    render() {
+
+    setOrder:function(e) {
+      console.log('test')
+      console.log(e.target.id)
+      console.log(this.state.order) //initial state
+      this.setState({order:e.target.id})
+      console.log(this.state.order) //what we want
+    },
+
+    render:function() {
         // Sort keys by likes
         //tweets sorted by more newest to oldest
-        let tweetKeys = Object.keys(this.state.tweets).sort((b,a) => {
-            return this.state.tweets[a].time - this.state.tweets[b].time
+        let tweetKeys = Object.keys(this.state.tweets).sort((a,b) => {
+            var first = this.state.tweets[a]
+            var second = this.state.tweets[b]
+            if(this.state.order === 'date') {
+              return second.time - first.time
+            } else if (this.state.order === 'likes') {
+              return second.likes - first.likes
+            } else {
+              var tweet1 = 0
+              var tweet2 = 0
+              if(first.comments != null) {
+                var tweet1 = Object.keys(first.comments).length
+              }
+              if(second.comments != null) {
+                var tweet2 = Object.keys(second.comments).length
+              }            
+              return tweet2 - tweet1
+            }
         });
+
+
+        //this.sortComments(this.state.tweets, this.state.order)
+
+
+
+      {/*Object.keys(this.state.tweets).sort((b,a) => {
+            return this.state.tweets[a].time - this.state.tweets[b].time
+        }); */}
+
         return(
           <div>
               <h5>Message Board</h5>
               <section className="tweet-container">
                   <TweetBox handleSubmit={this.createTweet}/>
+                  <SortFilter clickEvent={this.setOrder}/>
                   {/* <TweetBox handleSubmit={this.createTweet} revealComments={this.addComent}/> */}
                   {tweetKeys.map((d) => {
                       return <Tweet key={d}
