@@ -85,23 +85,14 @@ var TweetContainer = React.createClass({
               }
               if(second.comments != null) {
                 var tweet2 = Object.keys(second.comments).length
-              }            
+              }
               return tweet2 - tweet1
             }
         });
 
-
-        //this.sortComments(this.state.tweets, this.state.order)
-
-
-
-      {/*Object.keys(this.state.tweets).sort((b,a) => {
-            return this.state.tweets[a].time - this.state.tweets[b].time
-        }); */}
-
         return(
           <div>
-              <h5>Message Board</h5>
+              <h4>Message Board</h4>
               <section className="tweet-container">
                   <TweetBox handleSubmit={this.createTweet}/>
                   <SortFilter clickEvent={this.setOrder}/>
