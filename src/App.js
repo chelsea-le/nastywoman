@@ -12,6 +12,7 @@ import './css/App.css';
 
 import MapsPage from './MapsPage';
 import HomePage from './HomePage';
+import Quiz from './Quiz';
 
 // Create app
 var App = React.createClass({
@@ -121,9 +122,11 @@ var App = React.createClass({
                         </section>
                     </div>
                 }
+                {/*Nico:*/}
                 <MapsPage />
                 <HomePage />
                 <FuelForYourFire />
+
             </div>
         )
     }

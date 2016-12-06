@@ -1,9 +1,9 @@
 /* Quiz */
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
-var QuizData = [
+var quizData = [
     {id:"1", question:"Birth control?", a:"Yes", b:"No", c:"Your choice", answer:"c"},
     {id:"2", question:"Love Trumps _____?", a:"Men", b:"Hate", c:"Bugs", answer:"b"},
     {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"a"},
@@ -20,18 +20,18 @@ var Quiz = React.createClass({
     },
     update:function(event) {
         var value = event.target.id;
-        /*check to see if value is correct*/
-        this.setState({numcorrect:0})
+        /*check to see if value is correct aka add one to numcorrect*/
+        this.setState({numCorrect:0})
     },
     render:function() {
         return (
-            <MuiThemeProvider>
-              <div className="Quiz">
-                Quizdata.map(function(d) {
-                    <Questions data={bandData} changeEvent={this.update}/>
-                })
-              </div>
-            </MuiThemeProvider>
+            
+            <div className="Quiz">
+              /*goes through each item in data and creates the question for it*/
+                console.log(quizData);
+                <Questions data={quizData} changeEvent={this.update}/>
+            </div>
+           
         )
     }
 });
@@ -41,6 +41,8 @@ var Questions = React.createClass({
     render:function() {
         return(
             <div className="question">  
+
+            console.log(this.props.data)
 
             </div>
         )
