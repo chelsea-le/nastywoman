@@ -57,7 +57,18 @@
 }
 
 /*broadcast box*/
-#sendBox {
+#tweetBox {
+  position: relative;
+  border: .5px double black;
+  margin-bottom: 3px;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 3% 10% 3% 10%;
+}
+
+/*comment box*/
+/*#sendBox {
   position: relative;
   border: .5px double black;
   margin-bottom: 3px;
@@ -65,7 +76,7 @@
   padding-left: 20px;
   padding-right: 20px;
   margin: 1% 10% 2% 10%;
-}
+}*/
 
 /*description that says "broadcast thoughts..."*/
 #message-id {
@@ -96,6 +107,10 @@
 /*broadcast specific button*/
 #broadcast-btn {
   margin: -15% 20% 2% 10%;
+}
+/*comment specific button*/
+#comment-btn {
+  /*margin: -15% 20% 2% 10%;*/
 }
 
 #sortingOptions {

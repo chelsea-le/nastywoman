@@ -75,7 +75,7 @@ var Tweet = React.createClass({
                     <input id="message" type="text" value={this.state.comment} className="validate" placeholder="reply" onChange={this.setCommentState}/>
                 </div>
                 <button onClick={this.buttonClick} type="submit"
-                className="btn" id="broadcast-btn">Reply!</button>
+                className="btn" id="comment-btn">Reply!</button>
             {/* </form> */}
           </div>
         </div>
