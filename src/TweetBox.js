@@ -6,7 +6,7 @@ var TweetBox = React.createClass({
         return(
             <form onSubmit={this.props.handleSubmit}>
                 <div className="input-field col s12" id="sendBox">
-                    <input id="message" type="text" placeholder='Broadcast your thoughts...' className="validate" />
+                    <input id="message" type="text" maxLength="140" placeholder='Broadcast your thoughts...' className="validate"/>
                 </div>
                 <button type="submit" className="btn" id="broadcast-btn">Broadcast!</button>
             </form>
