@@ -52,10 +52,16 @@ var TweetContainer = React.createClass({
     },
 
     //Function that adds comments
-    addComment:function(tweetId, comment) {
-        console.log(comment)
+    addComment:function(tweetId, text) {
+        console.log(text)
         let ref = this.tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from firebase
+        let comment = {
+            author:this.props.user,
+            text:text,
+            time:firebase.database.ServerValue.TIMESTAMP // firebase service
+        };
+
         ref.push({comment})
     },
 

@@ -20,15 +20,6 @@ var SortFilter = React.createClass({
                     <input name="group1" type="radio" id="comments" onClick={this.props.clickEvent} name="group1" />
                     <label id="sortingOptions" htmlFor="comments">Number of Comments</label>
                 </p>
-
-				{/*skeleton of dropdown  */}
-           		{/* <a className='dropdown-button btn' href='#' data-activates='dropdown1'>Sort Messages</a>
-								<ul id='dropdown1' className='dropdown-content'>
-									<li><a href="#!">date</a></li>
-									<li><a href="#!">likes</a></li>
-									<li className="divider"></li>
-									<li><a href="#!">comments</a></li>
-								</ul> */}
 			</div>
 		)
 	}
