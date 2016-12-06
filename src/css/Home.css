@@ -1,11 +1,20 @@
 /*homepage css*/
 
 .trumpFeed {
-	width: 600px;
 	height: 800px;
 	overflow-y: auto;
 }
 
 .logo {
-	
+	display: block;
+	background-color: white;
+	width: 100%;
+}
+
+.container, .trumpFeed {
+	text-align: center;
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #ffcc80;
 }

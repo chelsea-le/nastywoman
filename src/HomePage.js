@@ -14,11 +14,11 @@ var HomePage = React.createClass({
             	<div className="info">
             		<h2> Do you agree with this? </h2>
             	</div>
-            	
+
             	<div className="trumpFeed">
 		            <a className="twitter-timeline" target='_blank' data-link-color="#E95F28" href="https://twitter.com/realDonaldTrump">
 		              @realDonaldTrump Tweets
-		            </a> 
+		            </a>
 		            <script>
 		              {!function(d,s,id){
 		                var js
@@ -32,9 +32,9 @@ var HomePage = React.createClass({
 		                }
 		              }
 		              (document,"script","twitter-wjs")}
-		            </script>            
-		        </div>
-          		
+		            </script>
+	            </div>
+
             	<div className="info">
             		<p> Do something about it! </p>
             	</div>
