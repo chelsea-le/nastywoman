@@ -47,7 +47,7 @@ var Tweet = React.createClass({
                 <span className="likes">{this.getNumComments()}</span>
             </p>
             <p>
-              <span className="content broadcast">{this.props.data.text}</span>
+              <span className="contentBroadcast">{this.props.data.text}</span>
             </p>
             <div className="commentWrapper">
             {

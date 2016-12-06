@@ -64,7 +64,7 @@
   padding-top: 15px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 5% 10% 5% 10%;
+  margin: 1% 10% 2% 10%;
 }
 
 /*description that says "broadcast thoughts..."*/
@@ -95,7 +95,7 @@
 
 /*broadcast specific button*/
 #broadcast-btn {
-  margin: -25% 20% 2% 10%;
+  margin: -15% 20% 2% 10%;
 }
 
 #sortingOptions {
@@ -112,8 +112,20 @@ h4 {
 
 .commentWrapper {
   padding-left: 2.5rem;
+  border-top: 1px groove LightGray;
 }
 
 .commentSingleWrapper {
   padding-bottom: 0.25rem;
+}
+
+.contentBroadcast {
+  font-size:1.25rem;
+}
+
+.card .card-content p {
+    margin: 0;
+    color: inherit;
+    padding-bottom: 1.25rem;
+    padding-top: 1rem;
 }
