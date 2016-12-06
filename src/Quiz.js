@@ -1,7 +1,6 @@
 /* Quiz */
 import React from 'react';
-//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import 'materialize-css';
 
 var quizData = [
     {id:"1", question:"Birth control?", a:"Yes", b:"No", c:"Your choice", answer:"c"},
@@ -18,32 +17,47 @@ var Quiz = React.createClass({
     getInitialState:function() {
         return {numCorrect:0};
     },
+
     update:function(event) {
         var value = event.target.id;
         /*check to see if value is correct aka add one to numcorrect*/
         this.setState({numCorrect:0})
     },
+
     render:function() {
         return (
-            
+
             <div className="Quiz">
-              /*goes through each item in data and creates the question for it*/
-                console.log(quizData);
-                <Questions data={quizData} changeEvent={this.update}/>
+              {
+                /*goes through each item in data and creates the question for it*/
+                quizData.map(function(d, i) {
+                  return(
+                    <Questions data={d} changeEvent={this.update} id={d.id + i}/>
+                  )}, this)
+              }
             </div>
-           
+
         )
     }
 });
 
 var Questions = React.createClass({
-
     render:function() {
         return(
-            <div className="question">  
-
-            console.log(this.props.data)
-
+            <div className="question">
+              <h5>{this.props.data.question}</h5>
+              <p>
+                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.a}</label>
+              </p>
+              <p>
+                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.b}</label>
+              </p>
+              <p>
+                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.c}</label>
+              </p>
             </div>
         )
     }

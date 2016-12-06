@@ -11,10 +11,18 @@
 	width: 100%;
 }
 
-.container, .trumpFeed {
+.homeContainer {
+	background-color: #ffcc80;
+
+}
+
+.homeContainer, .trumpFeed {
 	text-align: center;
 	width: 85%;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: #ffcc80;
+}
+
+h3 {
+	font-family: "Times New Roman", serif;
 }

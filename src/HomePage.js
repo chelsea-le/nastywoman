@@ -1,19 +1,30 @@
 /*home page!*/
 import React from 'react';
+import {hashHistory} from 'react-router';
 import './css/Home.css';
 import $ from 'jquery'
 import '../node_modules/font-awesome/css/font-awesome.css'
 
+import TrumpTwitterFeed from './TrumpTwitterFeed';
+
 var HomePage = React.createClass({
     render:function() {
         return(
-            <div className="container">
+            <div className="homeContainer">
             	<div className="logo">
             		<img src="/photos/nastyWoman6.jpg"/>
             	</div>
             	<div className="info">
-            		<h2> Do you agree with this? </h2>
+            	   <h3>Do you agree with this?</h3>
             	</div>
+
+              {
+                /*
+                  Maybe in the future consider component'ing this!
+
+                  Weird issue: twitter feed isn't rerendering when page loads again
+                */}
+
 
             	<div className="trumpFeed">
 		            <a className="twitter-timeline" target='_blank' data-link-color="#E95F28" href="https://twitter.com/realDonaldTrump">
@@ -35,18 +46,36 @@ var HomePage = React.createClass({
 		            </script>
 	            </div>
 
+
             	<div className="info">
             		<p> Do something about it! </p>
             	</div>
             	<div className="toQuiz">
-            		<a className="waves-effect waves-light btn">Sign In</a>
+            		<a className="waves-effect waves-light btn" onClick={this.handleSignInClick}>Sign In</a>
             	</div>
-                <div className="toHome">
-                    <a className="waves-effect waves-light btn">Sign up</a>
-                </div>
+              <div className="toHome">
+                  <a className="waves-effect waves-light btn" onClick={this.handleSignUpClick}>Sign up</a>
+              </div>
+              <div className="DEBUGBTN  ">
+                  <a className="waves-effect waves-light btn" onClick={this.handleAppClick}>DEBUG: Go to App</a>
+              </div>
             </div>
         )
-    }
+    },
+
+    handleSignInClick() {
+      hashHistory.push("sign-in");
+    },
+
+    handleSignUpClick() {
+      hashHistory.push("sign-up");
+    },
+
+    // DEBUG
+    handleAppClick() {
+      hashHistory.push("app ");
+    },
+    // DEBUG
 });
 
 export default HomePage;
