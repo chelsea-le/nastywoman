@@ -1,5 +1,6 @@
 // Firebase twitter-like application
 import React from 'react';
+import { Link } from 'react-router';
 import firebase from 'firebase';
 import FirebaseConfig from './Config';
 import SignUp from './SignUp';
@@ -100,10 +101,10 @@ var App = React.createClass({
 
         // Determine which 'authenticate' component should be shown
         if(this.state.authOption === 'sign-up') {
-            var authComponent = <SignUp submit={this.signUp}/>
+            var authComponent = <SignUp submit={this.signUp} />
         }
         else {
-            var authComponent = <SignIn submit={this.signIn}/>
+            var authComponent = <SignIn submit={this.signIn} />
         }
         return(
             <div>
@@ -122,11 +123,12 @@ var App = React.createClass({
                         </section>
                     </div>
                 }
-                {/*Nico:*/}
-                <MapsPage />
-                <HomePage />
-                <FuelForYourFire />
-
+                <div className="container">
+                  <ul>
+                    <li><Link to="/events">DEBUG: Go to Map</Link></li>
+                    <li><Link to="/fuel">DEBUG: Fuel For Your Fire</Link></li>
+                  </ul>
+                </div>
             </div>
         )
     }
