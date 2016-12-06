@@ -121,8 +121,6 @@ var App = React.createClass({
                         </section>
                     </div>
                 }
-
-                {/*Nico:*/}
                 <MapsPage />
                 <HomePage />
                 <FuelForYourFire />
