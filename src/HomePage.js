@@ -39,8 +39,11 @@ var HomePage = React.createClass({
             		<p> Do something about it! </p>
             	</div>
             	<div className="toQuiz">
-            		<a className="waves-effect waves-light btn">Get started.</a>
+            		<a className="waves-effect waves-light btn">Sign In</a>
             	</div>
+                <div className="toHome">
+                    <a className="waves-effect waves-light btn">Sign up</a>
+                </div>
             </div>
         )
     }
