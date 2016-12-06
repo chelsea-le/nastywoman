@@ -128,8 +128,9 @@ var App = React.createClass({
 
                 <div className="container">
                   <ul>
-                    <li><Link to="/events">DEBUG: Go to Map</Link></li>
-                    <li><Link to="/fuel">DEBUG: Fuel For Your Fire</Link></li>
+                    <li><Link to="/">DEBUG: Go to "HomePage" ONLY</Link></li>
+                    <li><Link to="/events">DEBUG: Go to "Events" ONLY</Link></li>
+                    <li><Link to="/fuel">DEBUG: Go to "Fuel For Your Fire" ONLY</Link></li>
                   </ul>
                 </div>
             </div>

@@ -8,23 +8,23 @@ var HomePage = React.createClass({
     render:function() {
         return(
             <div className="homeContainer">
-            	<div className="logo">
+              <div className="logo">
             		<img src="/photos/nastyWoman6.jpg" alt="logo"/>
             	</div>
             	<div className="info">
             	   <h3>Do you agree with this?</h3>
+                 <p><em>DEBUG: If you don&#39;t see the feed below, refresh the page.</em></p>
             	</div>
 
-              {
-                /*
-                  Maybe in the future consider component'ing this!
+              {/*
+                Maybe in the future consider component'ing Twitter Feed!
 
-                  Weird issue: twitter feed isn't rerendering when page loads again
-                */}
-
+                Weird issue: twitter feed isn't rerendering
+                when page is Routed to
+              */}
 
             	<div className="trumpFeed">
-		            <a className="twitter-timeline" target='_blank' data-link-color="#E95F28" href="https://twitter.com/realDonaldTrump">
+                <a className="twitter-timeline" target='_blank' data-link-color="#E95F28" href="https://twitter.com/realDonaldTrump">
 		              @realDonaldTrump Tweets
 		            </a>
 		            <script>
