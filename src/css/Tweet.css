@@ -109,3 +109,11 @@ h4 {
   font-stretch:extra-expanded;
   padding-bottom: 10px;
 }
+
+.commentWrapper {
+  padding-left: 2.5rem;
+}
+
+.commentSingleWrapper {
+  padding-bottom: 0.25rem;
+}

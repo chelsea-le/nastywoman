@@ -35,7 +35,7 @@ var Tweet = React.createClass({
       console.log(comments);
 
       return(
-        <div className="card small">
+        <div className="card">
           <div className="card-content">
             <p className="tweetWrapper">
                 <span className="author">{"@"+this.props.data.author+": "}</span>
@@ -47,12 +47,12 @@ var Tweet = React.createClass({
                 <span className="activator comment"><i className="fa fa-comments"></i></span>
                 <span className="likes">{this.getNumComments()}</span>
             </p>
-            <div>
+            <div className="commentWrapper">
             {
               comments && Object.keys(this.props.data.comments).map(function(d, i) {
                 var comDate = new Date(comments[d].comment.time).toLocaleString();
                 return (
-                  <p key={i}>
+                  <p className="singleCommentWrap" key={i}>
                     <span className="author">{comments[d].comment.author}</span>
                     <span className="time">{comDate}</span>
                     <span className="content">{comments[d].comment.text}</span>
