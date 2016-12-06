@@ -42,7 +42,7 @@ var TweetContainer = React.createClass({
     likeTweet:function(tweetId, change) {
         let ref = this.tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
-            var newLikes = parseInt(snapshot.val().likes) + change;
+            var newLikes = parseInt(snapshot.val().likes, 10) + change;
             console.log(newLikes)
             // Update on firebase
             ref.update({
@@ -86,11 +86,11 @@ var TweetContainer = React.createClass({
             } else {
               var tweet1 = 0
               var tweet2 = 0
-              if(first.comments != null) {
-                var tweet1 = Object.keys(first.comments).length
+              if (first.comments != null) {
+                tweet1 = Object.keys(first.comments).length
               }
-              if(second.comments != null) {
-                var tweet2 = Object.keys(second.comments).length
+              if (second.comments != null) {
+                tweet2 = Object.keys(second.comments).length
               }
               return tweet2 - tweet1
             }

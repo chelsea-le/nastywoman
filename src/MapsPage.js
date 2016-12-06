@@ -1,9 +1,9 @@
 // Component to render content on "Find Events" Page of App
 import React from 'react';
-import {PropTypes} from 'react';
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import withScriptjs from "react-google-maps/lib/async/withScriptjs";
 import _ from 'lodash';
+import FirebaseInit from './FirebaseInit';
 
 var AsyncMapDisplay = withScriptjs(withGoogleMap(
     props => (
@@ -34,7 +34,7 @@ var MapsPage = React.createClass({
         <p><b>Nico: next steps:</b></p>
         <div>
           <ul>
-            <li>Save state (markers) to Firebase...right now markers aren't preserved</li>
+            <li>Save state (markers) to Firebase...right now markers are not preserved</li>
             <li>Add pop-up dialog when adding event (essentially an "Add Event" form)</li>
             <li>Integrate Google Maps Location+Search API for autofill</li>
             <li>Reference user creation, add softcap for events/user (stretch)</li>
@@ -53,16 +53,26 @@ var MapsPage = React.createClass({
          lat: 47.6062,
          lng: -122.3321,
        },
-       key: `Seattle`,
+       key: `1`,
        defaultAnimation: 2,
      }],
-    })
+   })
+  },
+
+  componentWillMount() {
+    var mapMarkersRef = FirebaseInit.database().ref('mapMarkers');
+    mapMarkersRef.on('value', function(snapshot) {
+      var mapMarkerData = snapshot.val();
+      if (mapMarkerData !== null) {
+        this.setState({markers: mapMarkerData})
+      }
+    });
   },
 
   handleMapLoad(map) {
     this._mapComponent = map;
     if (map) {
-      console.log(map.getZoom());
+      // console.log(map.getZoom());
     }
   },
 

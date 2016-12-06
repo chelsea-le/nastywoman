@@ -1,14 +1,13 @@
 // Tweets component
 import React from 'react';
 import './css/Trump.css';
-import $ from 'jquery'
 import 'materialize-css'
 import '../node_modules/font-awesome/css/font-awesome.css'
 import TrumpTwitterFeed from './TrumpTwitterFeed';
 import SearchHashtags from './SearchHashtags';
 
-var FuelForYourFire = React.createClass({    
-    render:function() {   
+var FuelForYourFire = React.createClass({
+    render:function() {
       return (
         <div>
           <div className="row">
@@ -24,12 +23,10 @@ var FuelForYourFire = React.createClass({
             <div id="test2" className="col s12">
               <SearchHashtags />
             </div>
-          </div>     
+          </div>
         </div>
       )
     }
 });
 
 export default FuelForYourFire;
-
-

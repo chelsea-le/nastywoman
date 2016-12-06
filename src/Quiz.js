@@ -20,6 +20,7 @@ var Quiz = React.createClass({
 
     update:function(event) {
         var value = event.target.id;
+        console.log("value: " + value);
         /*check to see if value is correct aka add one to numcorrect*/
         this.setState({numCorrect:0})
     },

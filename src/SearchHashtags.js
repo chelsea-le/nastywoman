@@ -1,7 +1,6 @@
 // Tump Twitter Feed component
 import React from 'react';
 import './css/Trump.css';
-import $ from 'jquery'
 import 'materialize-css'
 import '../node_modules/font-awesome/css/font-awesome.css'
 
@@ -24,9 +23,8 @@ var SearchHashtags = React.createClass({
 						js.src=p+"://platform.twitter.com/widgets.js"
 						fjs.parentNode.insertBefore(js,fjs)
 					}
-				}
-				(document,"script","twitter-wjs")}
-			</script>                     
+				}(document,"script","twitter-wjs")}
+			</script>
 		</div>
 	)}
 });

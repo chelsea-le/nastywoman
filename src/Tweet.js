@@ -17,10 +17,10 @@ var Tweet = React.createClass({
       this.props.revealComments(commentValue)
     },
     getNumComments:function() {
-      var comNum = 0
-      var com = this.props.data.comments
-      if(com != null) {
-        var comNum = Object.keys(com).length
+      var comNum = 0;
+      var com = this.props.data.comments;
+      if (com != null) {
+        comNum = Object.keys(com).length;
       }
       return comNum
     },
@@ -30,9 +30,10 @@ var Tweet = React.createClass({
       var date = d.toLocaleString();
 
       //comments appear on console -- need help rendering in tweet
-      var comments = this.props.data.comments     
-      console.log(comments)
-   
+      var comments = this.props.data.comments
+      console.log(this.props.data.author + " tweeted: \"" + this.props.data.text + "\". Comment object: ");
+      console.log(comments);
+
       return(
         <div className="card small">
           <div className="card-content">
@@ -59,7 +60,7 @@ var Tweet = React.createClass({
               )})
             }
             </div>
-            
+
 
 
 
@@ -71,7 +72,7 @@ var Tweet = React.createClass({
                 <div className="input-field col s12" id="sendBox">
                     <input id="message" type="text" value={this.state.comment} className="validate" placeholder="reply" onChange={this.setCommentState}/>
                 </div>
-                <button onClick ={this.buttonClick} type="submit" 
+                <button onClick={this.buttonClick} type="submit"
                 className="btn" id="broadcast-btn">Reply!</button>
             {/* </form> */}
           </div>

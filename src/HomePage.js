@@ -2,17 +2,14 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
 import './css/Home.css';
-import $ from 'jquery'
 import '../node_modules/font-awesome/css/font-awesome.css'
-
-import TrumpTwitterFeed from './TrumpTwitterFeed';
 
 var HomePage = React.createClass({
     render:function() {
         return(
             <div className="homeContainer">
             	<div className="logo">
-            		<img src="/photos/nastyWoman6.jpg"/>
+            		<img src="/photos/nastyWoman6.jpg" alt="logo"/>
             	</div>
             	<div className="info">
             	   <h3>Do you agree with this?</h3>
@@ -41,8 +38,7 @@ var HomePage = React.createClass({
 		                  js.src=p+"://platform.twitter.com/widgets.js"
 		                  fjs.parentNode.insertBefore(js,fjs)
 		                }
-		              }
-		              (document,"script","twitter-wjs")}
+		              }(document,"script","twitter-wjs")}
 		            </script>
 	            </div>
 
@@ -51,10 +47,10 @@ var HomePage = React.createClass({
             		<p> Do something about it! </p>
             	</div>
             	<div className="toQuiz">
-            		<a className="waves-effect waves-light btn" onClick={this.handleSignInClick}>Sign In</a>
+            		<a className="waves-effect waves-light disabled btn" onClick={this.handleSignInClick}>Sign In</a>
             	</div>
               <div className="toHome">
-                  <a className="waves-effect waves-light btn" onClick={this.handleSignUpClick}>Sign up</a>
+                  <a className="waves-effect waves-light disabled btn" onClick={this.handleSignUpClick}>Sign up</a>
               </div>
               <div className="DEBUGBTN  ">
                   <a className="waves-effect waves-light btn" onClick={this.handleAppClick}>DEBUG: Go to App</a>
@@ -64,18 +60,17 @@ var HomePage = React.createClass({
     },
 
     handleSignInClick() {
-      hashHistory.push("sign-in");
+      // hashHistory.push("sign-in");
     },
 
     handleSignUpClick() {
-      hashHistory.push("sign-up");
+      // hashHistory.push("sign-up");
     },
 
     // DEBUG
     handleAppClick() {
       hashHistory.push("app ");
     },
-    // DEBUG
 });
 
 export default HomePage;

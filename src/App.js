@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import firebase from 'firebase';
-import FirebaseConfig from './Config';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
@@ -12,8 +11,7 @@ import FuelForYourFire from './FuelForYourFire';
 import './css/App.css';
 
 import MapsPage from './MapsPage';
-import HomePage from './HomePage';
-import Quiz from './Quiz';
+// import FirebaseInit from './FirebaseInit';
 
 // Create app
 var App = React.createClass({
@@ -28,7 +26,9 @@ var App = React.createClass({
     // When component mounts, check the user
     componentDidMount() {
         // Initialize app
-        firebase.initializeApp(FirebaseConfig);
+        // firebase.initializeApp(FirebaseConfig);
+        // Our Firebase instance is now initialied as a component.
+        // You can find this in FirebaseConfig.js
 
         // Check for authentication state change (test if there is a user)
         firebase.auth().onAuthStateChanged((user) => {
@@ -67,7 +67,7 @@ var App = React.createClass({
     },
 
     // Sign into an account
-    signIn (event){
+    signIn(event){
         event.preventDefault();
 
         // Get form values
@@ -100,11 +100,11 @@ var App = React.createClass({
     render() {
 
         // Determine which 'authenticate' component should be shown
-        if(this.state.authOption === 'sign-up') {
-            var authComponent = <SignUp submit={this.signUp} />
-        }
-        else {
-            var authComponent = <SignIn submit={this.signIn} />
+        var authComponent;
+        if (this.state.authOption === 'sign-up') {
+            authComponent = <SignUp submit={this.signUp} />
+        } else {
+            authComponent = <SignIn submit={this.signIn} />
         }
         return(
             <div>
@@ -123,6 +123,9 @@ var App = React.createClass({
                         </section>
                     </div>
                 }
+                <MapsPage />
+                <FuelForYourFire />
+
                 <div className="container">
                   <ul>
                     <li><Link to="/events">DEBUG: Go to Map</Link></li>
