@@ -72,7 +72,7 @@ var Tweet = React.createClass({
             <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right"><i className="fa fa-times"></i></i></span>
             {/* <form onSubmit = {this.props.revealComments}> */}
                 <div className="input-field col s12" id="sendBox">
-                    <input id="message" type="text" value={this.state.comment} className="validate" placeholder="reply" onChange={this.setCommentState}/>
+                    <input id="message" type="text" maxLength="140" value={this.state.comment} className="validate" placeholder="reply" onChange={this.setCommentState}/>
                 </div>
                 <button onClick={this.buttonClick} type="submit"
                 className="btn" id="comment-btn">Reply!</button>
