@@ -3,7 +3,7 @@ import React from 'react';
 import 'materialize-css';
 
 var quizData = [
-    {id:"1", question:"Birth control?", a:"Yes", b:"No", c:"Your choice", answer:"c"},
+    {id:"1", question:"What is your stance on birth control?", a:"Promotes premarital sex", b:"Is the woman's responsibility", c:"It's your choice to use it or not", answer:"c"},
     {id:"2", question:"Love Trumps _____?", a:"Men", b:"Hate", c:"Bugs", answer:"b"},
     {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"a"},
     {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"b"},
@@ -29,6 +29,10 @@ var Quiz = React.createClass({
         return (
 
             <div className="Quiz">
+              <h3> Just a precaution... </h3>
+              <p> With a rise in hateful internet practices, we want to keep our site relatively free from internet trolls. In addition to 
+              general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
+              account information at the bottom and get signed up!</p>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
@@ -48,16 +52,16 @@ var Questions = React.createClass({
             <div className="question">
               <h5>{this.props.data.question}</h5>
               <p>
-                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
-                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.a}</label>
+                  <input name={this.props.data.id} type="radio" id={this.props.id + "a"} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id + "a"}>{this.props.data.a}</label>
               </p>
               <p>
-                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
-                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.b}</label>
+                  <input name={this.props.data.id} type="radio" id={this.props.id + "b"} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id +"b"}>{this.props.data.b}</label>
               </p>
               <p>
-                  <input name="group1" type="radio" id={this.props.id} onClick={this.props.changeEvent} />
-                  <label id="sortingOptions" htmlFor={this.props.id}>{this.props.data.c}</label>
+                  <input name={this.props.data.id} type="radio" id={this.props.id + "c"} onClick={this.props.changeEvent} />
+                  <label id="sortingOptions" htmlFor={this.props.id + "c"}>{this.props.data.c}</label>
               </p>
             </div>
         )

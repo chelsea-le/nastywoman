@@ -1,11 +1,13 @@
 // Sign up
 import React from 'react';
+import Quiz from './Quiz';
 
 var SignUp = React.createClass({
     render() {
         return(
             <section className="container">
-                <h3>Sign up for an Account</h3>
+                <Quiz />
+                <h3>Account Information</h3>
                 <form onSubmit={this.props.submit} className="col s12 authenticate" id="sign-up">
                     <div className="row">
                         <div className="input-field col s12">
@@ -21,7 +23,7 @@ var SignUp = React.createClass({
                             <label htmlFor="displayName">Display Name</label>
                         </div>
                     </div>
-                    <button className="btn btn-primary">Sign Up</button>
+                    <button className="btn btn-primary">Submit!</button>
                 </form>
             </section>
         )

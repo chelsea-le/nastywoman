@@ -1,6 +1,7 @@
 // Sign up
 import React from 'react';
 
+
 var SignUp = React.createClass({
     render() {
         return(
