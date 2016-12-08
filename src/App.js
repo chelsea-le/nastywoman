@@ -9,13 +9,13 @@ import './css/App.css';
 // Create app
 var App = React.createClass({
     render() {
-        // Determine which 'authenticate' component should be shown
-        var authComponent;
-        if (this.state.authOption === 'sign-up') {
-            authComponent = <SignUp submit={this.signUp} />
-        } else {
-            authComponent = <SignIn submit={this.signIn} />
-        }
+        // // Determine which 'authenticate' component should be shown
+        // var authComponent;
+        // if (this.state.authOption === 'sign-up') {
+        //     authComponent = <SignUp submit={this.signUp} />
+        // } else {
+        //     authComponent = <SignIn submit={this.signIn} />
+        // }
 
         return (
           <div>
