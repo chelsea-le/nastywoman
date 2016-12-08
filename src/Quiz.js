@@ -39,6 +39,8 @@ var Quiz = React.createClass({
               <p> With a rise in hateful internet practices, we want to keep our site relatively free from internet trolls. In addition to
               general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
               account information at the bottom and get signed up!</p>
+              <h6>Already have an account?</h6>
+              <button className="btn btn-primary">Sign in!</button>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
