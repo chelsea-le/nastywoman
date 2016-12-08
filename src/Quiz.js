@@ -1,6 +1,5 @@
 /* Quiz */
 import React from 'react';
-import hashHistory from 'react-router'
 import 'materialize-css';
 import {hashHistory} from 'react-router';
 
