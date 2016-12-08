@@ -1,6 +1,7 @@
 // Tweets component
 import React from 'react';
 import firebase from 'firebase';
+import FirebaseInit from './FirebaseInit';
 import Tweet from './Tweet';
 import TweetBox from './TweetBox';
 import SortFilter from './SortFilter';
@@ -12,7 +13,7 @@ var TweetContainer = React.createClass({
         return {tweets:[], order:'date'}
     },
     componentDidMount:function(){
-        this.tweetRef = firebase.database().ref('tweets');
+        this.tweetRef = FirebaseInit.database().ref('tweets');
         this.tweetRef.on('value', (snapshot)=> {
 
             // In case there are no tweets
@@ -32,7 +33,7 @@ var TweetContainer = React.createClass({
             text:event.target.elements['message'].value,
             likes:0,
             liked: [],
-            time:firebase.database.ServerValue.TIMESTAMP, // firebase service
+            time:FirebaseInit.database.ServerValue.TIMESTAMP, // FirebaseInit service
             comments: {}
         };
         this.tweetRef.push(tweet);
@@ -50,7 +51,7 @@ var TweetContainer = React.createClass({
               likeLikes.push(this.tweetRef.child(tweetId).child("author"))
               var newLikes = parseInt(snapshot.val().likes, 10) + change;
               console.log(newLikes)
-              // Update on firebase
+              // Update on FirebaseInit
               ref.update({
                   likes: newLikes
               });              
@@ -62,11 +63,11 @@ var TweetContainer = React.createClass({
     addComment:function(tweetId, text) {
         console.log(text)
         let ref = this.tweetRef.child(tweetId).child("comments");
-        //currenly a string that says "comment"...need to grab comment from firebase
+        //currenly a string that says "comment"...need to grab comment from FirebaseInit
         let comment = {
             author:this.props.user,
             text:text,
-            time:firebase.database.ServerValue.TIMESTAMP // firebase service
+            time:FirebaseInit.database.ServerValue.TIMESTAMP // FirebaseInit service
         };
 
         ref.push({comment})

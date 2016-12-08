@@ -7,8 +7,8 @@ import '../node_modules/font-awesome/css/font-awesome.css'
 var SearchHashtags = React.createClass({
 	render:function() {
 		return (
-		<div className="hashtagFeed">
-			<h3>@realDonaldTrump Twitter Feed</h3>
+		<div className="trumpFeed">
+			<h3>#donaldtrump Twitter Feed</h3>
             <a className="twitter-timeline" target="_blank" href="https://twitter.com/hashtag/donaldtrump" data-widget-id="805227545452871680">
             	#donaldtrump Tweets
         	</a>
