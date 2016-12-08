@@ -22,12 +22,12 @@ var App = React.createClass({
             <nav>
               <div className="nav-wrapper orange darken-1">
                 <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
-                <img className="protest hide-on-med-and-down" src="/photos/protest.png" heigth="55" width="55"/>
+                <img className="protest hide-on-med-and-down" src="/photos/protest.png" height="55" width="55"/>
                 <ul id="nav-mobile" className="right">
                     <section className="icons">
-                    <li><Link to="/fuel"><img src="/photos/fire3.png" alt="twitter" heigth="55" width="55"/></Link></li>
-                    <li><Link params={{mergeStateOut: this.mergeStateOut}} to="/events"><img src="/photos/pin2.png" alt="events" heigth="55" width="55"/></Link></li>
-                    <li><Link to="/TweetContainer"><img src="/photos/broadcast4.png" alt="messaging" heigth="55" width="55"/></Link></li>
+                    <li><Link to="/fuel"><img src="/photos/fire3.png" alt="twitter" height="55" width="55"/></Link></li>
+                    <li><Link to="/events"><img src="/photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
+                    <li><Link to="/messaging"><img src="/photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
                     </section>
                   { /*
                   <li><Link to="/sign-up" className="grey darken-3">DEBUG: Sign Up ONLY</Link></li>
@@ -87,7 +87,7 @@ var App = React.createClass({
         )
     },
 
-    getInitialState(){
+    getInitialState:function(){
         return {
           checked: false,
           user: null,
@@ -119,7 +119,8 @@ var App = React.createClass({
     // PROTIP:
     // Pass in this function in Link
     // as <Link params={{key:value, ..., mergeStateOut:this.mergeStateOut}} ... >
-    mergeStateOut(incomingState) {
+    mergeStateOut:function(incomingState) {
+      console.log('mergeStateOut')
       this.setState(incomingState);
     },
 

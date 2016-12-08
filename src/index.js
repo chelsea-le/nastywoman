@@ -24,7 +24,7 @@ ReactDOM.render(
       <Route path="/events" component={MapsPage} />
       <Route path="/fuel" component={FuelForYourFire} />
       <Route path="/quiz" component={Quiz} />
-      <Route path="/messageboard" component={MessageBoard} />
+      <Route path="/messaging" component={TweetContainer} />
     </Route>
   </Router>,
   document.getElementById('root')
