@@ -3,12 +3,12 @@ import React from 'react';
 import 'materialize-css';
 
 var quizData = [
-    {id:"1", question:"What is your stance on birth control?", a:"Promotes premarital sex", b:"Is the woman's responsibility", c:"It's your choice to use it or not", answer:"c"},
-    {id:"2", question:"Love Trumps _____?", a:"Men", b:"Hate", c:"Bugs", answer:"b"},
-    {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"a"},
-    {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"b"},
-    {id:"5", question:"Consent is what?", a:"A grey area", b:"Once given cannot be retracted", c:"Mandatory", answer:"c"},
-    {id:"6", question:"Intentify Susan B Anthony", a:"susan", b:"ann", c:"jane", answer:"a"},
+    {id:"1", question:"What is your stance on birth control?", a:"Promotes premarital sex", b:"Is the woman's responsibility", c:"It's your choice to use it or not", answer:"10c"},
+    {id:"2", question:"Love Trumps _____?", a:"Men", b:"Hate", c:"Bugs", answer:"21b"},
+    {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"32a"},
+    {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"43b"},
+    {id:"5", question:"Consent is what?", a:"A grey area", b:"Once given cannot be retracted", c:"Mandatory", answer:"54c"},
+    {id:"6", question:"Intentify Susan B Anthony", a:"susan", b:"ann", c:"jane", answer:"65a"},
 
 ];
 
@@ -20,9 +20,14 @@ var Quiz = React.createClass({
 
     update:function(event) {
         var value = event.target.id;
-        console.log("value: " + value);
+        var correct = this.state.numCorrect;
         /*check to see if value is correct aka add one to numcorrect*/
-        this.setState({numCorrect:0})
+        quizData.map(function(d){
+          if(d.answer === value) {
+            return correct++;
+          }
+        })
+        this.setState({numCorrect:correct})
     },
 
     render:function() {
@@ -37,9 +42,10 @@ var Quiz = React.createClass({
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
                   return(
-                    <Questions data={d} changeEvent={this.update} id={d.id + i}/>
+                    <Questions data={d} changeEvent={this.update} id={d.id + i} />
                   )}, this)
               }
+
             </div>
 
         )
