@@ -26,7 +26,7 @@ var App = React.createClass({
                 <ul id="nav-mobile" className="right">
                     <section className="icons">
                     <li><Link to="/fuel"><img src="/photos/fire3.png" alt="twitter" heigth="55" width="55"/></Link></li>
-                    <li><Link to="/events"><img src="/photos/pin2.png" alt="events" heigth="55" width="55"/></Link></li>
+                    <li><Link params={{mergeStateOut: this.mergeStateOut}} to="/events"><img src="/photos/pin2.png" alt="events" heigth="55" width="55"/></Link></li>
                     <li><Link to="/TweetContainer"><img src="/photos/broadcast4.png" alt="messaging" heigth="55" width="55"/></Link></li>
                     </section>
                   { /*
@@ -86,6 +86,7 @@ var App = React.createClass({
           </div>
         )
     },
+
     getInitialState(){
         return {
           checked: false,
@@ -112,6 +113,14 @@ var App = React.createClass({
             // Indicate that state has been checked
             this.setState({checked:true})
         });
+    },
+
+    // Capture state from child component
+    // PROTIP:
+    // Pass in this function in Link
+    // as <Link params={{key:value, ..., mergeStateOut:this.mergeStateOut}} ... >
+    mergeStateOut(incomingState) {
+      this.setState(incomingState);
     },
 
     // Sign up for an account

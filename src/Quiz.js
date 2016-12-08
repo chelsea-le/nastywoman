@@ -1,5 +1,6 @@
 /* Quiz */
 import React from 'react';
+import hashHistory from 'react-router'
 import 'materialize-css';
 
 var quizData = [
@@ -37,11 +38,11 @@ var Quiz = React.createClass({
       } else {
         hashHistory.push("app ");
       }
-    }
+    },
 
     handleSignIn:function(){
       hashHistory.push("sign-in")
-    }
+    },
 
     render:function() {
         return (

@@ -27,21 +27,25 @@ var MapsPage = React.createClass({
   render() {
     return (
       <div className="container">
-        <hr />
         <h3> Find Events </h3>
-        <h5>DEBUG NOTES</h5>
-        <h5>clicking on map adds event, right click removes</h5>
-        <p><b>Nico: next steps:</b></p>
-        <div>
-          <ul>
-            <li>Save state (markers) to Firebase...right now markers are not preserved</li>
-            <li>Add pop-up dialog when adding event (essentially an "Add Event" form)</li>
-            <li>Integrate Google Maps Location+Search API for autofill</li>
-            <li>Reference user creation, add softcap for events/user (stretch)</li>
-          </ul>
-        </div>
         {this.renderMap()}
-        <hr />
+
+
+        <div>
+          <hr />
+          <hr />
+          <h5>DEBUG NOTES</h5>
+            <h5>clicking on map adds event, right click removes</h5>
+            <p><b>Nico: next steps:</b></p>
+            <ul>
+              <li>Save state (markers) to Firebase...right now markers are not preserved</li>
+              <li>Add pop-up dialog when adding event (essentially an "Add Event" form)</li>
+              <li>Integrate Google Maps Location+Search API for autofill</li>
+              <li>Reference user creation, add softcap for events/user (stretch)</li>
+            </ul>
+            <hr />
+            <hr />
+          </div>
       </div>
     )
   },
