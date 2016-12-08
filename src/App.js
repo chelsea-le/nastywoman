@@ -108,6 +108,20 @@ var App = React.createClass({
         }
         return(
             <div>
+              <nav>
+                <div className="nav-wrapper orange darken-1">
+                  <a href="#/app" className="brand-logo">Logo</a>
+                  <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li><Link to="/events">Events</Link></li>
+                    <li><Link to="/fuel">Fuel For Your Fire</Link></li>
+                    <li><Link to="/sign-up">DEBUG: Sign Up</Link></li>
+                    <li><Link to="/sign-in">DEBUG: Sign In</Link></li>
+                    <li><Link to="/quiz">DEBUG: Quiz</Link></li>
+                  </ul>
+                </div>
+              </nav>
+
+                {this.props.children}
                 {!this.state.user &&
                     <div>
                         {authComponent}

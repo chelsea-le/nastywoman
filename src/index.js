@@ -15,13 +15,12 @@ import FuelForYourFire from './FuelForYourFire';
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={HomePage} />
-    <Route path="/app" component={App} />
-    <Route path="/sign-up" component={SignUp} />
-    <Route path="/sign-in" component={SignIn} />
-    <Route path="/quiz" component={Quiz} />
-    <Route path="/events" component={MapsPage} />
-    <Route path="/fuel" component={FuelForYourFire} />
-
+    <Route path="/app" component={App}>
+      <Route path="/sign-up" component={SignUp} />
+      <Route path="/sign-in" component={SignIn} />
+      <Route path="/events" component={MapsPage} />
+      <Route path="/fuel" component={FuelForYourFire} />
+    </Route>
   </Router>,
   document.getElementById('root')
 );
