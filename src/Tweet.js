@@ -41,7 +41,7 @@ var Tweet = React.createClass({
                 <span className="author">{"@"+this.props.data.author+": "}</span>
                 <span className="time">{date}</span>
                 <span className="likes"><i onClick={this.props.like} className="fa fa-thumbs-up"></i></span>
-                <span className="likes">{this.props.data.likes}</span>
+                <span className="likes">{this.props.data.liked.length}</span>
                 <span className="likes"><i onClick={this.props.dislike} className="fa fa-thumbs-down"></i></span>
                 <span className="activator comment"><i className="fa fa-comments"></i></span>
                 <span className="likes">{this.getNumComments()}</span>

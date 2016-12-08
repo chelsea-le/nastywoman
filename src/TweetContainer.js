@@ -31,6 +31,7 @@ var TweetContainer = React.createClass({
             author:this.props.user,
             text:event.target.elements['message'].value,
             likes:0,
+            liked: [],
             time:firebase.database.ServerValue.TIMESTAMP, // firebase service
             comments: {}
         };
@@ -42,12 +43,18 @@ var TweetContainer = React.createClass({
     likeTweet:function(tweetId, change) {
         let ref = this.tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
-            var newLikes = parseInt(snapshot.val().likes, 10) + change;
-            console.log(newLikes)
-            // Update on firebase
-            ref.update({
-                likes: newLikes
-            });
+            var likeLikes = snapshot.val().liked
+            var author = this.tweetRef.child(tweetId).child("author")
+            var check = likeLikes[author]
+            if(check == null) {
+              likeLikes.push(this.tweetRef.child(tweetId).child("author"))
+              var newLikes = parseInt(snapshot.val().likes, 10) + change;
+              console.log(newLikes)
+              // Update on firebase
+              ref.update({
+                  likes: newLikes
+              });              
+            }
         });
     },
 
