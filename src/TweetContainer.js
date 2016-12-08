@@ -33,7 +33,7 @@ var TweetContainer = React.createClass({
             text:event.target.elements['message'].value,
             likes:0,
             liked: [],
-            time:firebase.database.ServerValue.TIMESTAMP, // FirebaseInit service
+            time:FirebaseInit.database.ServerValue.TIMESTAMP, // FirebaseInit service
             comments: {}
         };
         this.tweetRef.push(tweet);
