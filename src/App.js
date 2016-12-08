@@ -79,7 +79,7 @@ var App = React.createClass({
               </div>
               <div className="footer-copyright">
                 <div className="container">
-                © 2014 Copyright INFO343
+                © 2016 Copyright INFO343
                 </div>
               </div>
             </footer>

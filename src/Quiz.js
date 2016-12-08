@@ -9,7 +9,7 @@ var quizData = [
     {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"32a"},
     {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"43b"},
     {id:"5", question:"Consent is what?", a:"A grey area", b:"Once given cannot be retracted", c:"Mandatory", answer:"54c"},
-    {id:"6", question:"Intentify Susan B Anthony", a:"susan", b:"ann", c:"jane", answer:"65a"},
+    {id:"6", question:"Identify Susan B. Anthony", a:"susan", b:"ann", c:"jane", answer:"65a"},
 
 ];
 
