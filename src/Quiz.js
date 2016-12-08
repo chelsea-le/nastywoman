@@ -31,6 +31,18 @@ var Quiz = React.createClass({
         this.setState({numCorrect:correct})
     },
 
+    handleSubmit:function(){
+      if(this.state > 4){
+        hashHistory.push("sign-up");
+      } else {
+        hashHistory.push("app ");
+      }
+    }
+
+    handleSignIn:function(){
+      hashHistory.push("sign-in")
+    }
+
     render:function() {
         return (
 
@@ -40,7 +52,7 @@ var Quiz = React.createClass({
               general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
               account information at the bottom and get signed up!</p>
               <h6>Already have an account?</h6>
-              <button className="btn btn-primary">Sign in!</button>
+              <a className="waves-effect waves-light btn" onClick={this.handleSignIn}>Submit</a>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
@@ -48,7 +60,7 @@ var Quiz = React.createClass({
                     <Questions data={d} changeEvent={this.update} key={d.id + i} id={d.id + i} />
                   )}, this)
               }
-
+              <a className="waves-effect waves-light btn" onClick={this.handleSubmit}>Submit</a>
             </div>
 
         )
