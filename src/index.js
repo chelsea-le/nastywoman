@@ -11,6 +11,7 @@ import Quiz from './Quiz';
 import MapsPage from './MapsPage';
 import FuelForYourFire from './FuelForYourFire';
 import TweetContainer from './TweetContainer';
+import MessageBoard from './MessageBoard';
 
 
 ReactDOM.render(
@@ -23,7 +24,7 @@ ReactDOM.render(
       <Route path="/events" component={MapsPage} />
       <Route path="/fuel" component={FuelForYourFire} />
       <Route path="/quiz" component={Quiz} />
-      <Route path="/messageboard" component={TweetContainer} />
+      <Route path="/messageboard" component={MessageBoard} />
     </Route>
   </Router>,
   document.getElementById('root')
