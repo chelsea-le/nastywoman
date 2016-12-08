@@ -26,6 +26,7 @@ var Quiz = React.createClass({
           if(d.answer === value) {
             return correct++;
           }
+          return null; // fuzzed return. supresses Warning
         })
         this.setState({numCorrect:correct})
     },
@@ -35,14 +36,14 @@ var Quiz = React.createClass({
 
             <div className="Quiz">
               <h3> Just a precaution... </h3>
-              <p> With a rise in hateful internet practices, we want to keep our site relatively free from internet trolls. In addition to 
+              <p> With a rise in hateful internet practices, we want to keep our site relatively free from internet trolls. In addition to
               general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
               account information at the bottom and get signed up!</p>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
                   return(
-                    <Questions data={d} changeEvent={this.update} id={d.id + i} />
+                    <Questions data={d} changeEvent={this.update} key={d.id + i} id={d.id + i} />
                   )}, this)
               }
 

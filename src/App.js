@@ -4,17 +4,70 @@ import { Link } from 'react-router';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
-import SignOut from './SignOut';
-import ToggleAuth from './ToggleAuth';
-import TweetContainer from './TweetContainer';
-import FuelForYourFire from './FuelForYourFire';
 import './css/App.css';
-
-import MapsPage from './MapsPage';
-// import FirebaseInit from './FirebaseInit';
 
 // Create app
 var App = React.createClass({
+    render() {
+        // Determine which 'authenticate' component should be shown
+        var authComponent;
+        if (this.state.authOption === 'sign-up') {
+            authComponent = <SignUp submit={this.signUp} />
+        } else {
+            authComponent = <SignIn submit={this.signIn} />
+        }
+
+        return (
+          <div>
+            <nav>
+              <div className="nav-wrapper orange darken-1">
+                <a href="#/app" className="brand-logo">Logo</a>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                  <li><Link to="/fuel"><img src="/photos/fire3.png" alt="fuel" height="55px" width="55"/></Link></li>
+                  <li><Link to="/events"><img src="/photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
+                  <li><Link to="/messageboard"><img src="/photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
+                  { /*
+                  <li><Link to="/sign-up" className="grey darken-3">DEBUG: Sign Up ONLY</Link></li>
+                  <li><Link to="/sign-in" className="grey darken-3">DEBUG: Sign In ONLY</Link></li>
+                  <li><Link to="/quiz" className="grey darken-3">DEBUG: Quiz ONLY</Link></li>
+                  */ }
+                </ul>
+              </div>
+            </nav>
+
+            {this.props.children}
+            { /*
+              ********** NICO'S NOTES **********
+              - COMMENTING OUT: App.js should only display one component at a time.
+                                We can still handle state here (App.js's state), but it'll need to be managed
+                                with a function passed in as a prop. This, therefore,
+                                breaks Authentication.
+
+              - TO FIX AUTHENTICATION: You have to manage state (which looks like it's capturing
+                                       the firebase user object) using a function passed in as a prop
+                                       (for example: <SomeComponent updateState={this.updateState} />).
+                                       If you need another example, see this Slack message by Mike
+                                       https://info343c-a16.slack.com/archives/general/p1479233501000016 .
+              **********************************
+
+              {!this.state.user && window.url === "http://localhost:3000/?#/messageboard" &&
+                <div>
+                    {authComponent}
+                    <ToggleAuth handleClick={this.toggleLogin} authOption={this.state.authOption} />
+                </div>
+              }
+              {this.state.user && window.url === "http://localhost:3000/?#/messageboard" &&
+                  <div>
+                      <section>
+                          <SignOut submit={this.signOut}/>
+                          <TweetContainer user={this.state.user.displayName}/>
+                      </section>
+                  </div>
+              }
+            */ }
+          </div>
+        )
+    },
     getInitialState(){
         return {
           checked: false,
@@ -97,59 +150,6 @@ var App = React.createClass({
         this.setState({authOption:option});
     },
 
-    render() {
 
-        // Determine which 'authenticate' component should be shown
-        var authComponent;
-        if (this.state.authOption === 'sign-up') {
-            authComponent = <SignUp submit={this.signUp} />
-        } else {
-            authComponent = <SignIn submit={this.signIn} />
-        }
-        return(
-            <div>
-              <nav>
-                <div className="nav-wrapper orange darken-1">
-                  <a href="#/app" className="brand-logo">Logo</a>
-                  <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><Link to="/fuel"><img src="/photos/fire3.png" heigth="55" width="55"/></Link></li>
-                    <li><Link to="/events"><img src="/photos/pin2.png" heigth="55" width="55"/></Link></li>
-                    <li><Link to="/TweetContainer"><img src="/photos/broadcast4.png" heigth="55" width="55"/></Link></li>
-                    <li><Link to="/sign-up">DEBUG: Sign Up</Link></li>
-                    <li><Link to="/sign-in">DEBUG: Sign In</Link></li>
-                    <li><Link to="/quiz">DEBUG: Quiz</Link></li>
-                  </ul>
-                </div>
-              </nav>
-
-                {this.props.children}
-                {!this.state.user &&
-                    <div>
-                        {authComponent}
-                        <ToggleAuth handleClick={this.toggleLogin} authOption={this.state.authOption} />
-                    </div>
-
-                }
-                {this.state.user &&
-                    <div>
-                        <section>
-                            <SignOut submit={this.signOut}/>
-                            <TweetContainer user={this.state.user.displayName}/>
-                        </section>
-                    </div>
-                }
-                <MapsPage />
-                <FuelForYourFire />
-
-                <div className="container">
-                  <ul>
-                    <li><Link to="/">DEBUG: Go to "HomePage" ONLY</Link></li>
-                    <li><Link to="/events">DEBUG: Go to "Events" ONLY</Link></li>
-                    <li><Link to="/fuel">DEBUG: Go to "Fuel For Your Fire" ONLY</Link></li>
-                  </ul>
-                </div>
-            </div>
-        )
-    }
 });
 export default App;
