@@ -72,14 +72,14 @@ var App = React.createClass({
               <div className="container orange darken-1">
                 <div className="row">
                   <div className="col l6 s12">
-                    <h5 className="white-text">Nasty Woman brought to you by INFO 343</h5>
-                    <p className="grey-text text-lighten-4">Nico Malig | Chelsea Le | Keertana Chandar | Rosemary Adams</p>
+                    <h5 className="white-text">Nasty Woman brought to you by CRoNiK</h5>
+                    <p className="grey-text text-lighten-4">Chelsea Le | Rosemary Adams | Nico Malig | Keertana Chandar </p>
                   </div>
                 </div>
               </div>
               <div className="footer-copyright">
                 <div className="container">
-                © 2014 Copyright INFO343
+                © 2014 Copyright CRoNiK
                 </div>
               </div>
             </footer>
