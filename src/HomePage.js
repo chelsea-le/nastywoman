@@ -44,6 +44,7 @@ var HomePage = React.createClass({
 
 
             	<div className="info">
+                <h3>No?</h3>
             		<h3> Do something about it! </h3>
                 <p> Nasty Woman is mobilizing the feminist movement following the election of Donald Trump. We firmly believe in harnessing
                  the collective outrage and channeling it towards social, cultural, and legislative change that gives equal rights to all. 

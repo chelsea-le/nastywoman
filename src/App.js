@@ -65,6 +65,21 @@ var App = React.createClass({
                   </div>
               }
             */ }
+            <footer className="page-footer orange darken-1">
+              <div className="container orange darken-1">
+                <div className="row">
+                  <div className="col l6 s12">
+                    <h5 className="white-text">Nasty Woman brought to you by INFO 343</h5>
+                    <p className="grey-text text-lighten-4">Nico Malig | Chelsea Le | Keertana Chandar | Rosemary Adams</p>
+                  </div>
+                </div>
+              </div>
+              <div className="footer-copyright">
+                <div className="container">
+                © 2014 Copyright INFO343
+                </div>
+              </div>
+            </footer>
           </div>
         )
     },
@@ -149,7 +164,6 @@ var App = React.createClass({
         let option = this.state.authOption === 'sign-in' ? 'sign-up' : 'sign-in';
         this.setState({authOption:option});
     },
-
 
 });
 export default App;
