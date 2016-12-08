@@ -21,11 +21,14 @@ var App = React.createClass({
           <div>
             <nav>
               <div className="nav-wrapper orange darken-1">
-                <a href="#/app" className="brand-logo">Logo</a>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  <li><Link to="/fuel"><img src="/photos/fire3.png" alt="fuel" height="55px" width="55"/></Link></li>
-                  <li><Link to="/events"><img src="/photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
-                  <li><Link to="/messageboard"><img src="/photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
+                <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
+                <img className="protest hide-on-med-and-down" src="/photos/protest.png" heigth="55" width="55"/>
+                <ul id="nav-mobile" className="right">
+                    <section className="icons">
+                    <li><Link to="/fuel"><img src="/photos/fire3.png" alt="twitter" heigth="55" width="55"/></Link></li>
+                    <li><Link to="/events"><img src="/photos/pin2.png" alt="events" heigth="55" width="55"/></Link></li>
+                    <li><Link to="/TweetContainer"><img src="/photos/broadcast4.png" alt="messaging" heigth="55" width="55"/></Link></li>
+                    </section>
                   { /*
                   <li><Link to="/sign-up" className="grey darken-3">DEBUG: Sign Up ONLY</Link></li>
                   <li><Link to="/sign-in" className="grey darken-3">DEBUG: Sign In ONLY</Link></li>
@@ -164,6 +167,7 @@ var App = React.createClass({
         let option = this.state.authOption === 'sign-in' ? 'sign-up' : 'sign-in';
         this.setState({authOption:option});
     },
+
 
 });
 export default App;
