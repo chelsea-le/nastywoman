@@ -52,7 +52,7 @@ var HomePage = React.createClass({
                  We hope to facilitate discussion, mobilize the movement, and fuel the fire of the feminist movement! Join us!</p>
             	</div>
             	<div className="toQuiz">
-            		<a className="waves-effect waves-light disabled btn" onClick={this.handleSignUpClick}>Get started!</a>
+            		<a className="waves-effect waves-light btn" onClick={this.handleSignUpClick}>Get started!</a>
             	</div>
               <div className="DEBUGBTN  ">
                   <a className="waves-effect waves-light btn" onClick={this.handleAppClick}>DEBUG: Go to App</a>
@@ -62,7 +62,7 @@ var HomePage = React.createClass({
     },
 
     handleSignUpClick() {
-      // hashHistory.push("sign-up");
+       hashHistory.push("quiz");
     },
 
     // DEBUG
