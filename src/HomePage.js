@@ -9,7 +9,7 @@ var HomePage = React.createClass({
         return(
             <div className="homeContainer">
               <div className="logo">
-            		<img src="/photos/nastyWoman6.jpg" alt="logo"/>
+            		<img src="photos/nastyWoman6.jpg" alt="logo"/>
             	</div>
             	<div className="info">
             	   <h3>Do you agree with this?</h3>
@@ -46,13 +46,13 @@ var HomePage = React.createClass({
             	<div className="info">
                 <h3>No?</h3>
             		<h3> Do something about it! </h3>
-                <img className="protest hide-on-med-and-down" src="/photos/protest.png"/>
+                <img className="protest hide-on-med-and-down" src="photos/protest.png"/>
                 <p> Nasty Woman is mobilizing the feminist movement following the election of Donald Trump. We firmly believe in harnessing
-                 the collective outrage and channeling it towards social, cultural, and legislative change that gives equal rights to all. 
+                 the collective outrage and channeling it towards social, cultural, and legislative change that gives equal rights to all.
                  We hope to facilitate discussion, mobilize the movement, and fuel the fire of the feminist movement! Join us!</p>
             	</div>
             	<div className="toQuiz">
-            		<a className="waves-effect waves-light disabled btn" onClick={this.handleSignUpClick}>Get started!</a>
+            		<a className="waves-effect waves-light btn" onClick={this.handleSignUpClick}>Get started!</a>
             	</div>
               <div className="DEBUGBTN  ">
                   <a className="waves-effect waves-light btn" onClick={this.handleAppClick}>DEBUG: Go to App</a>
@@ -62,7 +62,7 @@ var HomePage = React.createClass({
     },
 
     handleSignUpClick() {
-      // hashHistory.push("sign-up");
+       hashHistory.push("quiz");
     },
 
     // DEBUG

@@ -2,6 +2,7 @@
 import React from 'react';
 import hashHistory from 'react-router'
 import 'materialize-css';
+import {hashHistory} from 'react-router';
 
 var quizData = [
     {id:"1", question:"What is your stance on birth control?", a:"Promotes premarital sex", b:"Is the woman's responsibility", c:"It's your choice to use it or not", answer:"10c"},
@@ -9,7 +10,7 @@ var quizData = [
     {id:"3", question:"Feminism isn't feminism unless its _____?", a:"Intersectional", b:"Radical", c:"Anti-Men", answer:"32a"},
     {id:"4", question:"Who is Ruth Bader Ginsburg?", a:"Secretary of State", b:"Supreme Court Justice", c:"Speaker for the House", answer:"43b"},
     {id:"5", question:"Consent is what?", a:"A grey area", b:"Once given cannot be retracted", c:"Mandatory", answer:"54c"},
-    {id:"6", question:"Intentify Susan B Anthony", a:"susan", b:"ann", c:"jane", answer:"65a"},
+    {id:"6", question:"Identify Susan B. Anthony", a:"susan", b:"ann", c:"jane", answer:"65a"},
 
 ];
 
@@ -53,7 +54,7 @@ var Quiz = React.createClass({
               general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
               account information at the bottom and get signed up!</p>
               <h6>Already have an account?</h6>
-              <a className="waves-effect waves-light btn" onClick={this.handleSignIn}>Submit</a>
+              <a className="waves-effect waves-light btn" onClick={this.handleSignIn}>Sign In</a>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {

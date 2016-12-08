@@ -22,12 +22,12 @@ var App = React.createClass({
             <nav>
               <div className="nav-wrapper orange darken-1">
                 <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
-                <img className="protest hide-on-med-and-down" src="/photos/protest.png" height="55" width="55"/>
+                <img className="protest hide-on-med-and-down" src="photos/protest.png" height="55" width="55"/>
                 <ul id="nav-mobile" className="right">
                     <section className="icons">
-                    <li><Link to="/fuel"><img src="/photos/fire3.png" alt="twitter" height="55" width="55"/></Link></li>
-                    <li><Link to="/events"><img src="/photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
-                    <li><Link to="/messaging"><img src="/photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
+                    <li><Link to="/fuel"><img src="photos/fire3.png" alt="twitter" height="55" width="55"/></Link></li>
+                    <li><Link to="/events"><img src="photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
+                    <li><Link to="/messaging"><img src="photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
                     </section>
                   { /*
                   <li><Link to="/sign-up" className="grey darken-3">DEBUG: Sign Up ONLY</Link></li>

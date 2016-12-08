@@ -54,7 +54,7 @@ var TweetContainer = React.createClass({
               // Update on FirebaseInit
               ref.update({
                   likes: newLikes
-              });              
+              });
             }
         });
     },
