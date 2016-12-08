@@ -29,6 +29,10 @@
   margin-right: auto;
 }
 
-.nav-mobile>img {
-  margin-top:10px;
+.brand-logo{
+  font-family: "Times New Roman", serif;
+  font-weight: 900;
+  margin-left:20px;
 }
+
+

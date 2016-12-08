@@ -110,11 +110,13 @@ var App = React.createClass({
             <div>
               <nav>
                 <div className="nav-wrapper orange darken-1">
-                  <a href="#/app" className="brand-logo">Logo</a>
-                  <ul id="nav-mobile" className="right hide-on-med-and-down">
+                  <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
+                  <ul id="nav-mobile" className="right">
+                    <section className="icons">
                     <li><Link to="/fuel"><img src="/photos/fire3.png" heigth="55" width="55"/></Link></li>
                     <li><Link to="/events"><img src="/photos/pin2.png" heigth="55" width="55"/></Link></li>
                     <li><Link to="/TweetContainer"><img src="/photos/broadcast4.png" heigth="55" width="55"/></Link></li>
+                    </section>
                     <li><Link to="/sign-up">DEBUG: Sign Up</Link></li>
                     <li><Link to="/sign-in">DEBUG: Sign In</Link></li>
                     <li><Link to="/quiz">DEBUG: Quiz</Link></li>
@@ -148,7 +150,23 @@ var App = React.createClass({
                     <li><Link to="/fuel">DEBUG: Go to "Fuel For Your Fire" ONLY</Link></li>
                   </ul>
                 </div>
-            </div>
+
+            <footer className="page-footer orange darken-1">
+              <div className="container orange darken-1">
+                <div className="row">
+                  <div className="col l6 s12">
+                    <h5 className="white-text">Nasty Woman brought to you by INFO 343</h5>
+                    <p className="grey-text text-lighten-4">Nico Malig | Chelsea Le | Keertana Chandar | Rosemary Adams</p>
+                  </div>
+                </div>
+              </div>
+              <div className="footer-copyright">
+                <div className="container">
+                © 2014 Copyright INFO343
+                </div>
+              </div>
+            </footer>
+        </div>
         )
     }
 });
