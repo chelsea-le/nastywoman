@@ -1,6 +1,6 @@
 # nastywoman
 
-By Keertana Chandar, Chelsea Le, Nico Malig, and Rosemary Adams
+By Rosemary Adams, Keertana Chandar, Chelsea Le, and Nico Malig
 
 Nasty Woman is a site meant to organize and mobilize the feminist movement following the election of Donald Trump. It combines modern data structures, user authentication, and an intuitive AI to facilitate the user experience. 
 
