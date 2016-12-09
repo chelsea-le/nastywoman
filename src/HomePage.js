@@ -62,7 +62,7 @@ var HomePage = React.createClass({
     },
 
     handleSignUpClick() {
-       hashHistory.push("quiz");
+       hashHistory.push("sign-up");
     },
 
     // DEBUG

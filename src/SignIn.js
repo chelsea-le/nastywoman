@@ -1,8 +1,12 @@
 // Sign up
 import React from 'react';
-
+import {hashHistory} from 'react-router';
 
 var SignUp = React.createClass({
+    handleSignIn() {
+      hashHistory.push("app ");
+    },
+
     render() {
         return(
             <section className="container">
@@ -18,7 +22,7 @@ var SignUp = React.createClass({
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>
-                    <button className="btn btn-primary">Sign In</button>
+                    <button className="btn btn-primary" onClick={this.handleSignIn}>Sign In</button>
                 </form>
             </section>
         )
