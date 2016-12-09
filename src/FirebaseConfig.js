@@ -8,6 +8,5 @@ var FirebaseConfig = {
   storageBucket: "nasty-woman.appspot.com",
   messagingSenderId: "812987711802"
 };
-var FirebaseInit = firebase.initializeApp(FirebaseConfig);
 
-export default FirebaseInit;
+export default FirebaseConfig;

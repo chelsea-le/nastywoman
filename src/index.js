@@ -15,19 +15,6 @@ import MessageBoard from './MessageBoard';
 
 
 ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={HomePage} />
-    <Route path="/sign-up" component={SignUp}/>
-    <Route path="/sign-in" component={SignIn}/>
-    <Route path="/app" component={App}>
-      <IndexRoute component={SignUp} />
-      // <Route path="/sign-up" component={SignUp} />
-      // <Route path="/sign-in" component={SignIn} />
-      <Route path="/events" component={MapsPage} />
-      <Route path="/fuel" component={FuelForYourFire} />
-      <Route path="/quiz" component={Quiz} />
-      <Route path="/messaging" component={TweetContainer} />
-    </Route>
-  </Router>,
+  <App />,
   document.getElementById('root')
 );

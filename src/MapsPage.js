@@ -3,7 +3,8 @@ import React from 'react';
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import withScriptjs from "react-google-maps/lib/async/withScriptjs";
 import _ from 'lodash';
-import FirebaseInit from './FirebaseInit';
+import FirebaseConfig from './FirebaseConfig';
+import firebase from 'firebase';
 
 var AsyncMapDisplay = withScriptjs(withGoogleMap(
     props => (
@@ -64,7 +65,7 @@ var MapsPage = React.createClass({
   },
 
   componentWillMount() {
-    var mapMarkersRef = FirebaseInit.database().ref('mapMarkers');
+    var mapMarkersRef = firebase.database().ref('mapMarkers');
     mapMarkersRef.on('value', function(snapshot) {
       var mapMarkerData = snapshot.val();
       if (mapMarkerData !== null) {

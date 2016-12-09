@@ -2,7 +2,7 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
 import './css/Home.css';
-import '../node_modules/font-awesome/css/font-awesome.css'
+import '../node_modules/font-awesome/css/font-awesome.css';
 
 var HomePage = React.createClass({
     render:function() {
