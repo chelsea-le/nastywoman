@@ -1,6 +1,6 @@
 .trumpFeed {
 	height: auto;
-	width: 750px;
+	max-width: 750px;
 	font-family: "Times New Roman", serif;
 	font-weight: 900;
 	padding-top: 15px;

@@ -6,13 +6,13 @@ import '../node_modules/font-awesome/css/font-awesome.css';
 var HomePage = React.createClass({
     render:function() {
         return(
-            <div className="homeContainer">
+            <div className="homeContainer container">
               <div className="logo">
             		<img src="../public/photos/nastyWoman6.jpg" alt="logo"/>
             	</div>
             	<div className="info">
             	   <h3>Do you agree with this?</h3>
-            	</div>
+            	</div> 
 
               {/*
                 Maybe in the future consider component'ing Twitter Feed!

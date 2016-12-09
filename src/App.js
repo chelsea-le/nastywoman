@@ -220,12 +220,14 @@ var App = React.createClass({
                       user: firebase.auth().currentUser,
                       firstVisit: false
                     });
+                    // after finishing createUser, reload to fix
+                    // dumb bug (navbar going away)!
+                    location.reload();
                 })
             });
 
         // Reset form
         event.target.reset();
-        window.reload();
     },
 
     // Sign out of an account

@@ -38,7 +38,7 @@ var Quiz = React.createClass({
         });
       } else {
         alert("Quiz failed, try again.");
-        window.location = "/";
+        window.location = "./";
       }
     },
 
