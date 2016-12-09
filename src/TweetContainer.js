@@ -1,20 +1,23 @@
 // Tweets component
 import React from 'react';
 import firebase from 'firebase';
-import FirebaseInit from './FirebaseInit';
 import Tweet from './Tweet';
 import TweetBox from './TweetBox';
 import SortFilter from './SortFilter';
-
-
+import './css/App.css'
+var tweetRef;
 
 var TweetContainer = React.createClass({
     getInitialState:function() {
         return {tweets:[], order:'date'}
     },
+
+    componentWillMount() {
+      tweetRef = firebase.database().ref('tweets');
+    },
+
     componentDidMount:function(){
-        this.tweetRef = FirebaseInit.database().ref('tweets');
-        this.tweetRef.on('value', (snapshot)=> {
+        tweetRef.on('value', (snapshot)=> {
 
             // In case there are no tweets
             if(snapshot.val()){
@@ -33,52 +36,46 @@ var TweetContainer = React.createClass({
             text:event.target.elements['message'].value,
             likes:0,
             liked: [],
-            time:FirebaseInit.database.ServerValue.TIMESTAMP, // FirebaseInit service
+            time:firebase.database.ServerValue.TIMESTAMP, // FirebaseInit service
             comments: {}
         };
-        this.tweetRef.push(tweet);
-        event.target.reset();
+        if (tweet.text.trim().length === 0) {
+          alert("You must type something!");
+        } else {
+          tweetRef.push(tweet);
+          event.target.reset();
+        }
     },
 
     // Function to like a tweet
     likeTweet:function(tweetId, change) {
-        let ref = this.tweetRef.child(tweetId);
+        let ref = tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
-            var likeLikes = snapshot.val().liked
-            var author = this.tweetRef.child(tweetId).child("author")
-            var check = likeLikes[author]
-            if(check == null) {
-              likeLikes.push(this.tweetRef.child(tweetId).child("author"))
-              var newLikes = parseInt(snapshot.val().likes, 10) + change;
-              console.log(newLikes)
-              // Update on FirebaseInit
-              ref.update({
-                  likes: newLikes
-              });
-            }
+            var newLikes = parseInt(snapshot.val().likes, 10);
+            newLikes += change;
+
+            // Update on Firebase
+            ref.update({
+                likes: newLikes
+            });
         });
     },
 
     //Function that adds comments
     addComment:function(tweetId, text) {
-        console.log(text)
-        let ref = this.tweetRef.child(tweetId).child("comments");
+        let ref = tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from FirebaseInit
         let comment = {
             author:this.props.user,
             text:text,
-            time:FirebaseInit.database.ServerValue.TIMESTAMP // FirebaseInit service
+            time:firebase.database.ServerValue.TIMESTAMP // FirebaseInit service
         };
 
         ref.push({comment})
     },
 
     setOrder:function(e) {
-      console.log('test')
-      console.log(e.target.id)
-      console.log(this.state.order) //initial state
       this.setState({order:e.target.id})
-      console.log(this.state.order) //what we want
     },
 
     render:function() {
@@ -106,7 +103,7 @@ var TweetContainer = React.createClass({
 
         return(
           <div>
-              <h4>Message Board</h4>
+              <h4 className="messageBoardTitle">Message Board</h4>
               <section className="tweet-container">
                   <TweetBox handleSubmit={this.createTweet}/>
                   <SortFilter clickEvent={this.setOrder}/>

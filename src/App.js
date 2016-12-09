@@ -1,16 +1,28 @@
 // Firebase twitter-like application
+
+// Module imports
 import React from 'react';
-import { Link } from 'react-router';
 import firebase from 'firebase';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
 import './css/App.css';
 
-// Create app
+// Component imports
+import HomePage from './HomePage';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import SignOut from './SignOut';
+import Quiz from './Quiz';
+import MapsPage from './MapsPage';
+import FuelForYourFire from './FuelForYourFire';
+import TweetContainer from './TweetContainer';
+import FirebaseConfig from './FirebaseConfig';
+
+// Nasty.
 var App = React.createClass({
     render() {
+
         // // Determine which 'authenticate' component should be shown
         // var authComponent;
+        //
         // if (this.state.authOption === 'sign-up') {
         //     authComponent = <SignUp submit={this.signUp} />
         // } else {
@@ -19,70 +31,102 @@ var App = React.createClass({
 
         return (
           <div>
-            <nav>
-              <div className="nav-wrapper orange darken-1">
-                <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
-                <img className="protest hide-on-med-and-down" src="photos/protest.png" height="55" width="55"/>
-                <ul id="nav-mobile" className="right">
-                    <section className="icons">
-                    <li><Link to="/fuel"><img src="photos/fire3.png" alt="twitter" height="55" width="55"/></Link></li>
-                    <li><Link to="/events"><img src="photos/pin2.png" alt="events" height="55" width="55"/></Link></li>
-                    <li><Link to="/messaging"><img src="photos/broadcast4.png" alt="messaging" height="55" width="55"/></Link></li>
+            {/* If firstVisit is FALSE, render navbar */}
+            {this.state.displayNavAndFooter === true &&
+              <nav>
+                <div className="nav-wrapper orange darken-1">
+                  <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
+                  <img alt="logo" className="protest hide-on-med-and-down" src="../public/photos/protest.png" height="55" width="55"/>
+                  <ul id="nav-mobile" className="right">
+                      <section className="icons">
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/broadcast4.png" alt="messaging" height="55" width="55"/></a></li>
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/fire3.png" alt="fuel" height="55" width="55"/></a></li>
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/pin2.png" alt="events" height="55" width="55"/></a></li>
                     </section>
-                  { /*
-                  <li><Link to="/sign-up" className="grey darken-3">DEBUG: Sign Up ONLY</Link></li>
-                  <li><Link to="/sign-in" className="grey darken-3">DEBUG: Sign In ONLY</Link></li>
-                  <li><Link to="/quiz" className="grey darken-3">DEBUG: Quiz ONLY</Link></li>
-                  */ }
-                </ul>
-              </div>
-            </nav>
-
-            {this.props.children}
-            { /*
-              ********** NICO'S NOTES **********
-              - COMMENTING OUT: App.js should only display one component at a time.
-                                We can still handle state here (App.js's state), but it'll need to be managed
-                                with a function passed in as a prop. This, therefore,
-                                breaks Authentication.
-
-              - TO FIX AUTHENTICATION: You have to manage state (which looks like it's capturing
-                                       the firebase user object) using a function passed in as a prop
-                                       (for example: <SomeComponent updateState={this.updateState} />).
-                                       If you need another example, see this Slack message by Mike
-                                       https://info343c-a16.slack.com/archives/general/p1479233501000016 .
-              **********************************
-
-              {!this.state.user && window.url === "http://localhost:3000/?#/messageboard" &&
-                <div>
-                    {authComponent}
-                    <ToggleAuth handleClick={this.toggleLogin} authOption={this.state.authOption} />
+                  </ul>
                 </div>
-              }
-              {this.state.user && window.url === "http://localhost:3000/?#/messageboard" &&
-                  <div>
-                      <section>
-                          <SignOut submit={this.signOut}/>
-                          <TweetContainer user={this.state.user.displayName}/>
-                      </section>
+              </nav>
+            }
+
+            { /* HANDLE RENDERING */}
+
+            { /* IF USER IS NOT AUTHENTICATED */}
+            {this.state.user === null
+              && this.state.getStartedClick === false &&
+              <HomePage mergeStateOut={this.mergeStateOut} />
+            }
+
+            { /* GET STARTED ON HOME PAGE IS CLICKED */}
+            { /* RENDER QUIZ */}
+            {this.state.user === null &&
+              this.state.getStartedClick === true &&
+              this.state.signInClicked === false &&
+              <Quiz mergeStateOut={this.mergeStateOut} />
+            }
+
+            { /* SIGN IN BUTTON ON QUIZ PAGE IS CLICKED */}
+            { /* RENDER SIGN IN */}
+            {this.state.user === null &&
+              this.state.getStartedClick === true &&
+              this.state.signInClicked === true &&
+              <SignIn mergeStateOut={this.mergeStateOut} submit={this.signIn} />
+            }
+
+            { /* QUIZ IS SUBMITTED */}
+            { /* RENDER SIGN UP */}
+            {this.state.user === null &&
+              this.state.getStartedClick === true &&
+              this.state.quizPassed === true &&
+              <SignUp mergeStateOut={this.mergeStateOut} submit={this.signUp} />
+            }
+
+            { /* *************************************************************** */}
+
+            { /* IF USER IS AUTHENTICATED ... */}
+
+
+            {this.state.user != null &&
+              this.state.currentTab === "fuel" &&
+              <div>
+                <SignOut submit={this.signOut}/>
+                <FuelForYourFire mergeStateOut={this.mergeStateOut} />
+              </div>
+            }
+
+            {this.state.user != null &&
+              this.state.currentTab === "events" &&
+              <div>
+                <SignOut submit={this.signOut}/>
+                <MapsPage mergeStateOut={this.mergeStateOut} userDisplayName={this.state.user.displayName} />
+              </div>
+            }
+
+            {this.state.user != null &&
+              this.state.currentTab === "messaging" &&
+              <div>
+                <SignOut submit={this.signOut}/>
+                <TweetContainer user={this.state.user.displayName}/>
+              </div>
+            }
+
+            {/* FOOTER CAUSE WE'RE COOL */}
+            {this.state.displayNavAndFooter === true &&
+              <footer className="page-footer orange darken-1">
+                <div className="container orange darken-1">
+                  <div className="row">
+                    <div className="col l6 s12">
+                      <h5 className="white-text">Nasty Woman brought to you by CRoNiK</h5>
+                      <p className="grey-text text-lighten-4">Chelsea Le | Rosemary Adams | Nico Malig | Keertana Chandar </p>
+                    </div>
                   </div>
-              }
-            */ }
-            <footer className="page-footer orange darken-1">
-              <div className="container orange darken-1">
-                <div className="row">
-                  <div className="col l6 s12">
-                    <h5 className="white-text">Nasty Woman brought to you by CRoNiK</h5>
-                    <p className="grey-text text-lighten-4">Chelsea Le | Rosemary Adams | Nico Malig | Keertana Chandar </p>
+                </div>
+                <div className="footer-copyright">
+                  <div className="container">
+                  © 2017 Copyright CRoNiK
                   </div>
                 </div>
-              </div>
-              <div className="footer-copyright">
-                <div className="container">
-                © 2014 Copyright CRoNiK
-                </div>
-              </div>
-            </footer>
+              </footer>
+            }
           </div>
         )
     },
@@ -91,22 +135,28 @@ var App = React.createClass({
         return {
           checked: false,
           user: null,
-          authOption:'sign-in'
+          authOption:'sign-in',
+          getStartedClick: false,
+          signInClicked: false,
+          displayNavAndFooter: false,
+          quizPassed: false,
+          currentTab: 'messaging',
         }
     },
 
     // When component mounts, check the user
     componentDidMount() {
         // Initialize app
-        // firebase.initializeApp(FirebaseConfig);
-        // Our Firebase instance is now initialied as a component.
-        // You can find this in FirebaseConfig.js
+        firebase.initializeApp(FirebaseConfig);
 
         // Check for authentication state change (test if there is a user)
         firebase.auth().onAuthStateChanged((user) => {
             if (this.state.checked !== true) {
                 if (user) {
-                    this.setState({user:user})
+                    this.setState({
+                      user: user,
+                      displayNavAndFooter: true
+                    })
                 }
             }
 
@@ -117,11 +167,38 @@ var App = React.createClass({
 
     // Capture state from child component
     // PROTIP:
-    // Pass in this function in Link
-    // as <Link params={{key:value, ..., mergeStateOut:this.mergeStateOut}} ... >
+    // Pass in as <MyComponent mergeStateOut={this.mergeStateOut} />
     mergeStateOut:function(incomingState) {
-      console.log('mergeStateOut')
       this.setState(incomingState);
+    },
+
+    // Watches for Navbar button clicks and changes what's displayed
+    handleNavClick(event) {
+      event.preventDefault();
+      this.setState({
+        currentTab: event.target.alt,
+      });
+    },
+
+    // Signs into an account
+    signIn(event){
+        event.preventDefault();
+
+        // Get form values
+        let email = event.target.elements['email'].value;
+        let password = event.target.elements['password'].value;
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                this.setState({
+                  user: firebase.auth().currentUser,
+                  displayNavAndFooter: true
+                });
+            });
+
+        // Clear form
+        event.target.reset();
+
     },
 
     // Sign up for an account
@@ -139,36 +216,25 @@ var App = React.createClass({
                 user.updateProfile({
                     displayName: displayName
                 }).then(() => {
-                    this.setState({user:firebase.auth().currentUser});
+                    this.setState({
+                      user: firebase.auth().currentUser,
+                      firstVisit: false
+                    });
                 })
             });
 
         // Reset form
         event.target.reset();
-    },
-
-    // Sign into an account
-    signIn(event){
-        event.preventDefault();
-
-        // Get form values
-        let email = event.target.elements['email'].value;
-        let password = event.target.elements['password'].value;
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((user) => {
-                this.setState({user:firebase.auth().currentUser});
-            });
-
-        // Clear form
-        event.target.reset();
-
+        window.reload();
     },
 
     // Sign out of an account
     signOut() {
         firebase.auth().signOut().then(() => {
-            this.setState({user:null});
+            this.setState({
+              user: null,
+              displayNavAndFooter: false
+            });
         });
     },
 

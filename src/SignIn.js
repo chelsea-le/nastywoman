@@ -1,10 +1,9 @@
 // Sign up
 import React from 'react';
-import {hashHistory} from 'react-router';
 
-var SignUp = React.createClass({
+var SignIn = React.createClass({
     handleSignIn() {
-      hashHistory.push("app ");
+      console.log("User is signing in");
     },
 
     render() {
@@ -29,4 +28,4 @@ var SignUp = React.createClass({
     }
 });
 
-export default SignUp;
+export default SignIn;

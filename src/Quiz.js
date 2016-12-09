@@ -1,7 +1,6 @@
 /* Quiz */
 import React from 'react';
 import 'materialize-css';
-import {hashHistory} from 'react-router';
 
 var quizData = [
     {id:"1", question:"What is your stance on birth control?", a:"Promotes premarital sex", b:"Is the woman's responsibility", c:"It's your choice to use it or not", answer:"10c"},
@@ -33,27 +32,32 @@ var Quiz = React.createClass({
     },
 
     handleSubmit:function(){
-      if(this.state > 4){
-        hashHistory.push("sign-up");
+      if (this.state.numCorrect > 4) {
+        this.props.mergeStateOut({
+          quizPassed: true
+        });
       } else {
-        hashHistory.push("app ");
+        alert("Quiz failed, try again.");
+        window.location = "/";
       }
     },
 
-    handleSignIn:function(){
-      hashHistory.push("sign-in")
+    handleQuizSignInButtonClick() {
+      this.props.mergeStateOut({
+        authOption: 'sign-in',
+        signInClicked: true
+      })
     },
 
     render:function() {
         return (
-
-            <div className="Quiz">
+            <div className="Quiz container">
               <h3> Just a precaution... </h3>
               <p> With a rise in hateful internet practices, we want to keep our site relatively free from internet trolls. In addition to
               general forum rules listed in the site, each user must pass this basic quiz. Once you complete the quiz, go ahead and fill in your
               account information at the bottom and get signed up!</p>
               <h6>Already have an account?</h6>
-              <a className="waves-effect waves-light btn" onClick={this.handleSignIn}>Sign In</a>
+              <a className="waves-effect waves-light btn" onClick={this.handleQuizSignInButtonClick}>Sign In</a>
               {
                 /*goes through each item in data and creates the question for it*/
                 quizData.map(function(d, i) {
@@ -63,7 +67,6 @@ var Quiz = React.createClass({
               }
               <a className="waves-effect waves-light btn" onClick={this.handleSubmit}>Submit</a>
             </div>
-
         )
     }
 });

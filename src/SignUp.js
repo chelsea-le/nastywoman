@@ -1,18 +1,15 @@
 // Sign up
 import React from 'react';
-import Quiz from './Quiz';
 import 'materialize-css';
-import {hashHistory} from 'react-router';
 
 var SignUp = React.createClass({
     handleSignUpClick() {
-       hashHistory.push("app");
+       console.log("User is signing up.");
     },
 
     render() {
         return(
             <section className="container">
-                <Quiz />
                 <h3>Account Information</h3>
                 <form onSubmit={this.props.submit} className="col s12 authenticate" id="sign-up">
                     <div className="row">

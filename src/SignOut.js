@@ -5,7 +5,7 @@ import './css/SignOut.css';
 var SignOut = React.createClass({
     render() {
         return(
-            <button onClick={this.props.submit} className="btn btn-primary sign-out">Sign Out</button>
+            <button onClick={this.props.submit} className="btn btn-primary sign-out red darken-3">Sign Out</button>
         )
     }
 });

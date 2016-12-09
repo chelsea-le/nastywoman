@@ -29,6 +29,11 @@
   margin-right: auto;
 }
 
+.messageBoardTitle {
+  font-family: "Times New Roman", serif;
+  font-weight: 900;
+}
+
 .brand-logo{
   font-family: "Times New Roman", serif;
   font-weight: 900;
@@ -43,5 +48,5 @@
 @media (min-width: 600px) {
     .icons>li{
       padding-top:5px;
-    } 
+    }
 }
