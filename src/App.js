@@ -221,7 +221,7 @@ var App = React.createClass({
                       firstVisit: false
                     });
                     // after finishing createUser, reload to fix
-                    // dumb bug (navbar going away)
+                    // dumb bug (navbar going away)!
                     location.reload();
                 })
             });
