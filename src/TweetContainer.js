@@ -38,8 +38,12 @@ var TweetContainer = React.createClass({
             time:firebase.database.ServerValue.TIMESTAMP, // FirebaseInit service
             comments: {}
         };
-        tweetRef.push(tweet);
-        event.target.reset();
+        if (tweet.text.trim().length === 0) {
+          alert("You must type something!");
+        } else {
+          tweetRef.push(tweet);
+          event.target.reset();
+        }
     },
 
     // Function to like a tweet
