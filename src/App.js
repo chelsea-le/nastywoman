@@ -95,7 +95,7 @@ var App = React.createClass({
             {this.state.user != null &&
               this.state.currentTab === "events" &&
               <div>
-                <MapsPage mergeStateOut={this.mergeStateOut} />
+                <MapsPage mergeStateOut={this.mergeStateOut} submit={this.createEvent} />
               </div>
             }
 
@@ -168,6 +168,20 @@ var App = React.createClass({
     // Pass in as <MyComponent mergeStateOut={this.mergeStateOut} />
     mergeStateOut:function(incomingState) {
       this.setState(incomingState);
+    },
+
+    // Creates event from MapsPage
+    createEvent(event) {
+      event.preventDefault();
+
+      console.log(event.target.elements['title'].value);
+      console.log(event.target.elements['location'].value);
+      console.log(event.target.elements['date'].value);
+      console.log(event.target.elements['time'].value);
+      console.log(event.target.elements['description'].value);
+      // Successfully capturing information
+      
+
     },
 
     // Watches for Navbar button clicks and changes what's displayed
