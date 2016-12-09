@@ -3,7 +3,6 @@ import React from 'react';
 import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import withScriptjs from "react-google-maps/lib/async/withScriptjs";
 import _ from 'lodash';
-import FirebaseConfig from './FirebaseConfig';
 import firebase from 'firebase';
 
 var AsyncMapDisplay = withScriptjs(withGoogleMap(

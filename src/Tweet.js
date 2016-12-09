@@ -31,8 +31,6 @@ var Tweet = React.createClass({
 
       //comments appear on console -- need help rendering in tweet
       var comments = this.props.data.comments
-      console.log(this.props.data.author + " tweeted: \"" + this.props.data.text + "\". Comment object: ");
-      console.log(comments);
 
       return(
         <div className="card">

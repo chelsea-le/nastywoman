@@ -50,17 +50,15 @@ var TweetContainer = React.createClass({
             var author = tweetRef.child(tweetId).child("author");
             var check = null;
             var newLikes = parseInt(snapshot.val().likes, 10);
-
+            var incomingLikeArray = [];
             //
-            if (likeLikes === null) {
-              likeLikes.push(author);
+            if (likeLikes == null) {
+              incomingLikeArray.push(author);
               newLikes += change;
             } else {
               check = likeLikes[author];
-              if (check === null) {
-                console.log("likeLikes: ");
-                console.log(likeLikes);
-                likeLikes.push(author)
+              if (check == null) {
+                incomingLikeArray.push(author)
                 newLikes += change;
               }
             }
@@ -68,8 +66,8 @@ var TweetContainer = React.createClass({
             console.log(newLikes);
             // Update on FirebaseInit
             ref.update({
-                likes: newLikes,
-                liked: likeLikes
+                likes: newLikes
+                // liked: incomingLikeArray
             });
         });
     },

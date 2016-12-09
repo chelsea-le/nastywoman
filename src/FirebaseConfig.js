@@ -1,6 +1,4 @@
-// Initialize Firebase
-import firebase from 'firebase';
-
+// Firebase configuration file
 var FirebaseConfig = {
   apiKey: "AIzaSyDryU5_CW22davZKMLsx8xgpQJD6gjzBPM",
   authDomain: "nasty-woman.firebaseapp.com",
