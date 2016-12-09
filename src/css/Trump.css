@@ -1,9 +1,7 @@
 .trumpFeed {
-	width: auto;
-	height: 650px;
-	overflow-y: auto;
-}
-
-#hashtag-search {
-	width: 600px;
+	height: auto;
+	width: 750px;
+	font-family: "Times New Roman", serif;
+	font-weight: 900;
+	padding-top: 15px;
 }

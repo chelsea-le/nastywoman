@@ -4,6 +4,7 @@ import firebase from 'firebase';
 import Tweet from './Tweet';
 import TweetBox from './TweetBox';
 import SortFilter from './SortFilter';
+import './css/App.css'
 var tweetRef;
 
 var TweetContainer = React.createClass({
@@ -50,35 +51,18 @@ var TweetContainer = React.createClass({
     likeTweet:function(tweetId, change) {
         let ref = tweetRef.child(tweetId);
         ref.once('value').then(function(snapshot) {
-            var likeLikes = snapshot.val().liked;
-            var author = tweetRef.child(tweetId).child("author");
-            var check = null;
             var newLikes = parseInt(snapshot.val().likes, 10);
-            var incomingLikeArray = [];
-            //
-            if (likeLikes == null) {
-              incomingLikeArray.push(author);
-              newLikes += change;
-            } else {
-              check = likeLikes[author];
-              if (check == null) {
-                incomingLikeArray.push(author)
-                newLikes += change;
-              }
-            }
+            newLikes += change;
 
-            console.log(newLikes);
-            // Update on FirebaseInit
+            // Update on Firebase
             ref.update({
                 likes: newLikes
-                // liked: incomingLikeArray
             });
         });
     },
 
     //Function that adds comments
     addComment:function(tweetId, text) {
-        console.log(text)
         let ref = tweetRef.child(tweetId).child("comments");
         //currenly a string that says "comment"...need to grab comment from FirebaseInit
         let comment = {
@@ -91,11 +75,7 @@ var TweetContainer = React.createClass({
     },
 
     setOrder:function(e) {
-      console.log('test')
-      console.log(e.target.id)
-      console.log(this.state.order) //initial state
       this.setState({order:e.target.id})
-      console.log(this.state.order) //what we want
     },
 
     render:function() {
@@ -123,7 +103,7 @@ var TweetContainer = React.createClass({
 
         return(
           <div>
-              <h4>Message Board</h4>
+              <h4 className="messageBoardTitle">Message Board</h4>
               <section className="tweet-container">
                   <TweetBox handleSubmit={this.createTweet}/>
                   <SortFilter clickEvent={this.setOrder}/>

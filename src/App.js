@@ -36,12 +36,12 @@ var App = React.createClass({
               <nav>
                 <div className="nav-wrapper orange darken-1">
                   <a href="#/app" className="brand-logo hide-on-med-and-down">Nasty Woman</a>
-                  <img alt="logo" className="protest hide-on-med-and-down" src="photos/protest.png" height="55" width="55"/>
+                  <img alt="logo" className="protest hide-on-med-and-down" src="../public/photos/protest.png" height="55" width="55"/>
                   <ul id="nav-mobile" className="right">
                       <section className="icons">
-                      <li><a onClick={this.handleNavClick}><img src="photos/fire3.png" alt="fuel" height="55" width="55"/></a></li>
-                      <li><a onClick={this.handleNavClick}><img src="photos/pin2.png" alt="events" height="55" width="55"/></a></li>
-                      <li><a onClick={this.handleNavClick}><img src="photos/broadcast4.png" alt="messaging" height="55" width="55"/></a></li>
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/broadcast4.png" alt="messaging" height="55" width="55"/></a></li>
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/fire3.png" alt="fuel" height="55" width="55"/></a></li>
+                      <li><a onClick={this.handleNavClick}><img src="../public/photos/pin2.png" alt="events" height="55" width="55"/></a></li>
                     </section>
                   </ul>
                 </div>
@@ -88,6 +88,7 @@ var App = React.createClass({
             {this.state.user != null &&
               this.state.currentTab === "fuel" &&
               <div>
+                <SignOut submit={this.signOut}/>
                 <FuelForYourFire mergeStateOut={this.mergeStateOut} />
               </div>
             }
@@ -95,6 +96,7 @@ var App = React.createClass({
             {this.state.user != null &&
               this.state.currentTab === "events" &&
               <div>
+                <SignOut submit={this.signOut}/>
                 <MapsPage mergeStateOut={this.mergeStateOut} userDisplayName={this.state.user.displayName} />
               </div>
             }
@@ -138,7 +140,7 @@ var App = React.createClass({
           signInClicked: false,
           displayNavAndFooter: false,
           quizPassed: false,
-          currentTab: 'fuel',
+          currentTab: 'messaging',
         }
     },
 
@@ -223,6 +225,7 @@ var App = React.createClass({
 
         // Reset form
         event.target.reset();
+        window.reload();
     },
 
     // Sign out of an account

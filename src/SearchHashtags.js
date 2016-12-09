@@ -3,16 +3,29 @@ import React from 'react';
 import './css/Trump.css';
 import 'materialize-css'
 import '../node_modules/font-awesome/css/font-awesome.css'
+import { Timeline } from 'react-twitter-widgets';
 
 var SearchHashtags = React.createClass({
 	render:function() {
 		return (
 		<div className="trumpFeed">
 			<h3>#donaldtrump Twitter Feed</h3>
-            <a className="twitter-timeline" target="_blank" href="https://twitter.com/hashtag/donaldtrump" data-widget-id="805227545452871680">
-            	#donaldtrump Tweets
-        	</a>
-			<script>
+      <a className="twitter-timeline" target="_blank" href="https://twitter.com/hashtag/donaldtrump" data-widget-id="805227545452871680">
+      	#donaldtrump Tweets
+  		</a>
+
+			<Timeline
+				dataSource={{
+					sourceType: 'url',
+					url: 'https://twitter.com/hashtag/donaldtrump'
+				}}
+				options={{
+					height: '1000',
+					align: 'center'
+				}}
+			/>
+
+			{/*<script>
 				{!function(d,s,id){
 					var js
 					var fjs=d.getElementsByTagName(s)[0]
@@ -24,7 +37,7 @@ var SearchHashtags = React.createClass({
 						fjs.parentNode.insertBefore(js,fjs)
 					}
 				}(document,"script","twitter-wjs")}
-			</script>
+			</script>*/}
 		</div>
 	)}
 });

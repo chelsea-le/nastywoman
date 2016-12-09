@@ -8,11 +8,10 @@ var HomePage = React.createClass({
         return(
             <div className="homeContainer">
               <div className="logo">
-            		<img src="photos/nastyWoman6.jpg" alt="logo"/>
+            		<img src="../public/photos/nastyWoman6.jpg" alt="logo"/>
             	</div>
             	<div className="info">
             	   <h3>Do you agree with this?</h3>
-                 <p><em>DEBUG: If you don&#39;t see the feed below, refresh the page.</em></p>
             	</div>
 
               {/*
