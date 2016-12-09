@@ -8,4 +8,4 @@ Our site can be found here: https://chelsea-le.github.io/nastywoman/build/
 
 In total, it took about 50 hours+ to complete.
 
-to change things on published link: run npm build, push
+
