@@ -7,10 +7,8 @@ import TrumpTwitterFeed from './TrumpTwitterFeed';
 var FuelForYourFire = React.createClass({
     render:function() {
       return (
-        <div>
-          <div className="row">
+        <div className="container">
             <TrumpTwitterFeed  />
-          </div>
         </div>
       )
     }

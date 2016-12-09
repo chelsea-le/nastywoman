@@ -9,7 +9,7 @@ import { Timeline } from 'react-twitter-widgets';
 var TrumpTwitterFeed = React.createClass({
 	render:function() {
 		return (
-			<div className="trumpFeed">
+			<div className="trumpFeed container">
 				<h5>Fuel your fire with...</h5>
 				<h3>@realDonaldTrump Twitter Feed</h3>
 
