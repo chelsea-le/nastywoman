@@ -4,6 +4,10 @@ import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import withScriptjs from "react-google-maps/lib/async/withScriptjs";
 import _ from 'lodash';
 import firebase from 'firebase';
+import EventCard from './EventCard';
+import CreateEventForm from './CreateEventForm';
+
+var eventsRef;
 
 var AsyncMapDisplay = withScriptjs(withGoogleMap(
     props => (
@@ -25,52 +29,44 @@ var AsyncMapDisplay = withScriptjs(withGoogleMap(
 
 var MapsPage = React.createClass({
   render() {
+
+    let eventKeys = Object.keys(this.state.events);
+
     return (
       <div className="container">
-        <h3> Find Events </h3>
+        <h3> Events </h3>
         {this.renderMap()}
 
         <hr />
-        <h5>Add an Event</h5>
-        <form onSubmit={this.props.submit} className="col s12 authenticate" id="event-submit">
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="title" type="text" className="validate" />
-              <label htmlFor="title">Event Title</label>
-            </div>
-            <div className="input-field col s12">
-              <input id="location" type="text" className="validate" />
-              <label htmlFor="location">Location</label>
-            </div>
-            <div className="input-field col s12">
-              <input id="date" type="date" className="datepicker" />
-            </div>
-            <div className="input-field col s12">
-              <input id="time" placeholder="Time (ex. 2:30PM)" type="text" className="validate" />
-            </div>
-            <div className="input-field col s12">
-              <input id="description" type="text" className="validate" />
-              <label htmlFor="description">Description</label>
-            </div>
-          </div>
-          <button className="btn btn-primary" >Submit</button>
-        </form>
+        <h5> Add an Event </h5>
+        <CreateEventForm submit={this.createEvent} />
+        <hr />
 
-        <div>
-          <hr />
-          <hr />
-          <h5>DEBUG NOTES</h5>
-            <h5>clicking on map adds event, right click removes</h5>
-            <p><b>Nico: next steps:</b></p>
-            <ul>
-              <li>Save state (markers) to Firebase...right now markers are not preserved</li>
-              <li>Add pop-up dialog when adding event (essentially an "Add Event" form)</li>
-              <li>Integrate Google Maps Location+Search API for autofill</li>
-              <li>Reference user creation, add softcap for events/user (stretch)</li>
-            </ul>
-            <hr />
-            <hr />
-          </div>
+        <h5> Find Events </h5>
+        {
+          eventKeys.map((d) => {
+            return <EventCard
+                      key={d}
+                      title={this.state.events[d].title}
+                      author={this.state.events[d].author}
+                      location={this.state.events[d].location}
+                      description={this.state.events[d].description}
+                      time={this.state.events[d].time}
+                      date={this.state.events[d].date}
+                    />
+          })
+        }
+
+        { /*
+        <EventCard
+          title="Title"
+          author="@author"
+          location="Location"
+          description="Desc"
+          time="Time"
+          date="Date"
+        />
+        */ }
       </div>
     )
   },
@@ -85,17 +81,41 @@ var MapsPage = React.createClass({
        key: `1`,
        defaultAnimation: 2,
      }],
+     events: []
    })
   },
 
   componentWillMount() {
-    var mapMarkersRef = firebase.database().ref('mapMarkers');
-    mapMarkersRef.on('value', function(snapshot) {
-      var mapMarkerData = snapshot.val();
-      if (mapMarkerData !== null) {
-        this.setState({markers: mapMarkerData})
+    eventsRef = firebase.database().ref('events');
+  },
+
+  componentDidMount() {
+    eventsRef.on('value', (snapshot)=> {
+      // In case there are no Events
+      if (snapshot.val()){
+          this.setState({events:snapshot.val()});
       }
     });
+  },
+
+  // Creates event from MapsPage
+  createEvent(event) {
+    event.preventDefault();
+
+    let currentEvent = {
+      id: firebase.database.ServerValue.TIMESTAMP,
+      title: event.target.elements['title'].value,
+      location: event.target.elements['location'].value,
+      date: event.target.elements['date'].value,
+      time: event.target.elements['time'].value,
+      description: event.target.elements['description'].value,
+      author: this.props.userDisplayName
+    }
+
+    // Push Event up to Firebase
+    eventsRef.push(currentEvent);
+    event.target.reset();
+
   },
 
   handleMapLoad(map) {
